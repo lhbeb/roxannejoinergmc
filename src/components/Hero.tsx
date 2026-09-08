@@ -79,9 +79,6 @@ const Hero = () => {
           <div className="order-2 flex w-full flex-col justify-center bg-[#123E52] p-6 sm:p-8 md:order-1 md:p-12 lg:p-14 text-[#F7F3E8]">
             {/* Kayak brand introduction */}
             <h1 className="max-w-[620px] text-2xl font-bold leading-tight text-[#F7F3E8] md:text-3xl lg:text-[34px]">
-              <span className="mb-3 block text-xs font-semibold uppercase tracking-wider text-[#9BD4D3]">
-                RoxanneJoiner Kayak Brand
-              </span>
               <span
                 ref={typingTextRef}
                 className="mb-1 block min-h-[2.5em] lg:min-h-[1.25em] text-[#9BD4D3]"
