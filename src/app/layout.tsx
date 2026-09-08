@@ -121,7 +121,14 @@ export default function RootLayout({
                 "url": "https://roxannejoiner.com",
                 "logo": "https://roxannejoiner.com/mainlogo.svg",
                 "description": "RoxanneJoiner - Kayaks & Paddling Gear. Discover kayaks and paddling essentials.",
-
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "141 Elm St #01",
+                  "addressLocality": "Marlborough",
+                  "addressRegion": "MA",
+                  "postalCode": "01752",
+                  "addressCountry": "US"
+                }
               })
             }}
           />
