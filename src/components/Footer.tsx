@@ -23,7 +23,7 @@ const Footer = () => {
               />
             </Link>
             <p className="mb-4 text-[#F7F3E8]/90 text-sm leading-relaxed">
-              RoxanneJoiner is a kayak brand inspired by life on the water. Discover kayaks and paddling essentials for your next adventure.
+              RoxanneJoiner is a kayak business and brand inspired by life on the water. Discover kayaks and paddling essentials for your next adventure.
             </p>
             <BrandContactDetails />
           </div>
