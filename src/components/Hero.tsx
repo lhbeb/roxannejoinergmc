@@ -84,7 +84,7 @@ const Hero = () => {
               </span>
               <span
                 ref={typingTextRef}
-                className="mb-1 block min-h-[1.25em] h-auto md:h-[1.25em] text-[#9BD4D3]"
+                className="mb-1 block min-h-[2.5em] lg:min-h-[1.25em] text-[#9BD4D3]"
               >
                 {placeholder}
               </span>
