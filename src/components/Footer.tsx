@@ -26,6 +26,21 @@ const Footer = () => {
               RoxanneJoiner is a kayak business and brand inspired by life on the water. Discover kayaks and paddling essentials for your next adventure.
             </p>
             <BrandContactDetails />
+            <div className="mt-6 flex space-x-4">
+              <a href="https://www.instagram.com/roxannejoiner.shop/" target="_blank" rel="noopener noreferrer" className={socialIconClass} aria-label="Instagram">
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a href="https://www.tiktok.com/@roxannejoiner.shop" target="_blank" rel="noopener noreferrer" className={socialIconClass} aria-label="TikTok">
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.2c0 1.63-.48 3.23-1.4 4.54-1.14 1.62-2.88 2.65-4.8 3.03-1.93.39-3.95.2-5.71-.62-2.31-1.09-3.95-3.23-4.47-5.71-.46-2.22-.09-4.57 1.09-6.52 1.25-2.07 3.39-3.5 5.76-3.97v4.18c-1.39.18-2.67.92-3.46 2.05-.72 1.03-.97 2.37-.64 3.59.34 1.25 1.2 2.32 2.34 2.87 1.2.58 2.62.63 3.86.15 1.18-.46 2.1-1.45 2.51-2.66.19-.57.25-1.18.25-1.78V.02h4.09z"/>
+                </svg>
+              </a>
+              <a href="https://www.pinterest.com/roxannejoinershop/" target="_blank" rel="noopener noreferrer" className={socialIconClass} aria-label="Pinterest">
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.929-7.252 4.163 0 7.398 2.967 7.398 6.923 0 4.136-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                </svg>
+              </a>
+            </div>
           </div>
           <div>
             <h3 className="text-base font-semibold text-white mb-4 tracking-wide uppercase">Navigation</h3>
