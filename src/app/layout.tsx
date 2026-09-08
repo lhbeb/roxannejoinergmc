@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "RoxanneJoiner",
     images: [
       {
-        url: "/kayak-hero.png",
+        url: "/roxannejoiner-wave-hero.webp",
         width: 1200,
         height: 900,
         alt: "RoxanneJoiner - Kayaks for Your Next Adventure",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "RoxanneJoiner - Kayaks & Paddling Gear",
     description: "Explore RoxanneJoiner kayaks and paddling accessories.",
-    images: ["/kayak-hero.png"],
+    images: ["/roxannejoiner-wave-hero.webp"],
   },
   icons: {
     icon: [

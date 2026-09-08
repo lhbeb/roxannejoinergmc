@@ -26,8 +26,8 @@ const Hero = () => {
           {/* Image panel */}
           <div className="relative order-1 min-h-[280px] overflow-hidden md:order-2 md:min-h-0 bg-[#123E52]/20">
             <Image
-              src="/kayak-hero.svg"
-              alt="Kayak illustration on calm green water"
+              src="/roxannejoiner-wave-hero.webp"
+              alt="RoxanneJoiner touring kayak beside a curling ocean wave"
               fill
               priority
               sizes="(max-width: 767px) 100vw, 50vw"
