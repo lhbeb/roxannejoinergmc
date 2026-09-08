@@ -73,8 +73,8 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-[#F7F3E8]">
-      <div className="container relative z-10 mx-auto px-4 py-8 md:py-10">
-        <div className="mx-auto grid w-full max-w-7xl overflow-hidden rounded-2xl shadow-xl md:min-h-[440px] md:grid-cols-[1fr_1fr] md:items-stretch border border-[#123E52]/10">
+      <div className="container relative z-10 mx-auto px-4 py-16 md:py-24">
+        <div className="mx-auto grid w-full max-w-5xl overflow-hidden rounded-2xl shadow-xl md:min-h-[550px] md:grid-cols-[1fr_1fr] md:items-stretch border border-[#123E52]/10">
           {/* Content panel */}
           <div className="order-2 flex w-full flex-col justify-center bg-[#123E52] p-6 sm:p-8 md:order-1 md:p-10 lg:p-12 text-[#F7F3E8]">
             {/* Kayak brand introduction */}
