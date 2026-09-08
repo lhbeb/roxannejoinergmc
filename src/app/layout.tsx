@@ -121,6 +121,13 @@ export default function RootLayout({
                 "url": "https://roxannejoiner.com",
                 "logo": "https://roxannejoiner.com/mainlogo.svg",
                 "description": "RoxanneJoiner - Kayaks & Paddling Gear. Discover kayaks and paddling essentials.",
+                "telephone": "+18555292501",
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+18555292501",
+                  "contactType": "customer service",
+                  "areaServed": "US"
+                },
                 "address": {
                   "@type": "PostalAddress",
                   "streetAddress": "141 Elm St #01",
