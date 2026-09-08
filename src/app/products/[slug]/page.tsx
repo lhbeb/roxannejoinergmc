@@ -1,7 +1,8 @@
 import { getProductBySlug } from '@/lib/data';
 import { getReviewProduct, isReviewProduct } from '@/lib/reviewProducts';
-import { getSellerById } from '@/lib/supabase/sellers';
 import { formatValidSku, mapConditionToSchema } from '@/lib/conditions';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
+import { storePolicy } from '@/config/storePolicy';
 import { notFound } from 'next/navigation';
 import ProductPageClient from './ProductPageClient';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -19,7 +20,7 @@ export async function generateMetadata(
 
     let product = isReviewProduct(slug) ? getReviewProduct(slug) : null;
     if (!product) product = await getProductBySlug(slug);
-    if (!product) return { title: 'Product Not Found | RoxanneJoiner' };
+    if (!product || !isPublicStoreProduct(product)) return { title: 'Product Not Found | RoxanneJoiner', robots: { index: false, follow: false } };
 
     const title = `${product.title || 'Product'} - ${product.brand || ''} | ${product.category || ''} | RoxanneJoiner`;
     const description = (product.description || '').substring(0, 155) + '...';
@@ -83,31 +84,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
     let product = isReviewProduct(slug) ? getReviewProduct(slug) : null;
     if (!product) product = await getProductBySlug(slug);
-    if (!product) notFound();
-
-    // ── Review inheritance ─────────────────────────────────────────────────
-    const hasOwnReviews = Array.isArray(product.reviews) && product.reviews.length > 0;
-    if (!hasOwnReviews && product.sellerId) {
-      try {
-        const seller = await getSellerById(product.sellerId);
-        if (seller && seller.reviews && seller.reviews.length > 0) {
-          product = {
-            ...product,
-            reviews: seller.reviews,
-            rating: product.rating || seller.averageRating || 0,
-            reviewCount: product.reviewCount || seller.totalReviews || 0,
-            meta: {
-              ...product.meta,
-              _sellerReviews: true,
-              _sellerName: seller.name,
-              _sellerUsername: seller.username,
-            } as any,
-          };
-        }
-      } catch {
-        // Silently ignore – don't break product page if seller fetch fails
-      }
-    }
+    if (!product || !isPublicStoreProduct(product)) notFound();
 
     const p = product!;
     const inStock = p.inStock !== false;
@@ -151,10 +128,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           "@type": "MerchantReturnPolicy",
           "applicableCountry": ["US"],
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 30,
+          "merchantReturnDays": storePolicy.returnWindowDays,
           "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn",
-          "returnLabelSource": "https://schema.org/ReturnLabelDownloadAndPrint",
+          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
           "restockingFee": 0,
           "refundType": "https://schema.org/FullRefund"
         },
@@ -174,14 +150,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               "@type": "ShippingDeliveryTime",
               "handlingTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
+                "minValue": storePolicy.handlingDays.min,
+                "maxValue": storePolicy.handlingDays.max,
                 "unitCode": "DAY"
               },
               "transitTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 5,
-                "maxValue": 9,
+                "minValue": storePolicy.transitDays.min,
+                "maxValue": storePolicy.transitDays.max,
                 "unitCode": "DAY"
               }
             }

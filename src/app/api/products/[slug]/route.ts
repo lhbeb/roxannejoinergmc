@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getProductBySlug } from '@/lib/data';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 
 export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
@@ -11,7 +12,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
 
     const product = await getProductBySlug(slug);
 
-    if (!product) {
+    if (!product || !isPublicStoreProduct(product)) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }
 
@@ -23,4 +24,4 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
       { status: 500 }
     );
   }
-} 
+}

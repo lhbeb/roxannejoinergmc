@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAllProducts } from '@/lib/data';
 import { formatValidSku, mapConditionToGmc } from '@/lib/conditions';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
+import { isMerchantEligibleCheckoutFlow, storePolicy } from '@/config/storePolicy';
 import type { Product } from '@/types/product';
 
-const BASE_URL = 'https://www.roxannejoiner.com';
+const BASE_URL = 'https://roxannejoiner.com';
 const SUPPORTED_COUNTRIES = ['US'] as const;
 const SUPPORTED_CURRENCIES = ['USD'] as const;
 
@@ -42,7 +44,10 @@ function isFeedEligible(product: Product): boolean {
     product.published !== false &&
     Boolean(product.slug && product.title && product.images?.[0]) &&
     Number.isFinite(Number(product.price)) &&
-    Number(product.price) > 0
+    Number(product.price) > 0 &&
+    (product.currency || 'USD').toUpperCase() === storePolicy.currency &&
+    isPublicStoreProduct(product) &&
+    isMerchantEligibleCheckoutFlow(product.checkoutFlow)
   );
 }
 
@@ -58,16 +63,20 @@ function buildShippingXml(
         <g:country>${country}</g:country>
         <g:service>${shipping.service}</g:service>
         <g:price>0.00 ${itemCurrency}</g:price>
-        <g:min_handling_time>0</g:min_handling_time>
-        <g:max_handling_time>1</g:max_handling_time>
-        <g:min_transit_time>5</g:min_transit_time>
-        <g:max_transit_time>9</g:max_transit_time>
+        <g:min_handling_time>${storePolicy.handlingDays.min}</g:min_handling_time>
+        <g:max_handling_time>${storePolicy.handlingDays.max}</g:max_handling_time>
+        <g:min_transit_time>${storePolicy.transitDays.min}</g:min_transit_time>
+        <g:max_transit_time>${storePolicy.transitDays.max}</g:max_transit_time>
       </g:shipping>`;
     })
     .join('');
 }
 
 export async function GET(request: NextRequest) {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    return new NextResponse('Product database is not configured.', { status: 503 });
+  }
+
   const country = parseEnum(
     request.nextUrl.searchParams.get('country'),
     SUPPORTED_COUNTRIES,
@@ -113,8 +122,7 @@ export async function GET(request: NextRequest) {
         const condition = mapConditionToGmc(product.condition);
         const brand = escapeXml(product.brand || 'RoxanneJoiner');
         const category = escapeXml(product.category || 'Home & Garden');
-        const originalImage = new URL(product.images[0], BASE_URL).toString();
-        const imageLink = escapeXml(`${BASE_URL}/api/image-proxy?url=${encodeURIComponent(originalImage)}`);
+        const imageLink = escapeXml(new URL(product.images[0], BASE_URL).toString());
 
         return `
     <item>

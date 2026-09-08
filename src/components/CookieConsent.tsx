@@ -16,11 +16,13 @@ const CookieConsent: React.FC = () => {
 
   const handleAccept = () => {
     localStorage.setItem('cookieConsent', 'accepted');
+    window.dispatchEvent(new Event('cookie-consent-change'));
     setIsVisible(false);
   };
 
   const handleDecline = () => {
     localStorage.setItem('cookieConsent', 'declined');
+    window.dispatchEvent(new Event('cookie-consent-change'));
     setIsVisible(false);
   };
 
@@ -38,7 +40,7 @@ const CookieConsent: React.FC = () => {
           <div className="flex items-center space-x-3 text-center sm:text-left">
             <Cookie className="h-5 w-5 text-[#397F86] flex-shrink-0" />
             <p className="text-[#F7F3E8] text-xs sm:text-sm">
-              RoxanneJoiner uses essential cookies to ensure seamless shopping and cart functionality.
+              RoxanneJoiner uses essential storage for shopping features. Optional analytics runs only if you accept.
               <Link href="/cookies" className="underline ml-1.5 hover:text-white font-medium">Learn more</Link>
             </p>
           </div>

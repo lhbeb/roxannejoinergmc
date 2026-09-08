@@ -1,4 +1,4 @@
-import { isPaddlingProduct } from '@/lib/kayakCatalog';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 import React, { Suspense } from 'react';
 import Hero from '@/components/Hero';
 import SameDayShipping from '@/components/SameDayShipping';
@@ -21,8 +21,8 @@ export default async function HomePage() {
       getProducts(),
     ]);
 
-    const products = productRows.filter(isPaddlingProduct);
-    const featuredProducts = featuredRows.filter(isPaddlingProduct);
+    const products = productRows.filter(isPublicStoreProduct);
+    const featuredProducts = featuredRows.filter(isPublicStoreProduct);
 
     const kayaks = products.filter(p =>
       p.category?.toLowerCase().includes('kayak') ||

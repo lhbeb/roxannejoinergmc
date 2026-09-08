@@ -1,120 +1,18 @@
 import BrandContactDetails from '@/components/BrandContactDetails';
-import React from 'react';
 
-const CookiesPage = () => (
-  <div className="min-h-screen flex flex-col bg-gray-50 py-12">
-    <div className="container mx-auto px-4 max-w-4xl">
-      <h1 className="text-4xl font-bold text-[#262626] mb-8">Cookies Policy</h1>
-      
-      <div className="prose max-w-none text-gray-700 space-y-8">
-        {/* Introduction */}
-        <p className="text-lg leading-relaxed">
-          This Cookies Policy explains how RoxanneJoiner uses cookies and similar tracking technologies on our website. By using our website, you agree to the use of cookies as described in this policy.
-        </p>
-
-        {/* What Are Cookies */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">What Are Cookies</h2>
-          <p>
-            Cookies are small text files stored on your computer or mobile device when you visit a website. They help websites function properly, improve performance, and provide valuable information to site owners.
-          </p>
-        </div>
-
-        {/* Types of Cookies We Use */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Types of Cookies We Use</h2>
-          
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-bold text-[#262626] mb-2">Essential Cookies</h3>
-              <p>
-                These cookies are required for the website to operate. They support functions such as page navigation, secure login, and access to restricted areas.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-[#262626] mb-2">Performance Cookies</h3>
-              <p>
-                These cookies collect anonymous data about how visitors use our website. They help us understand user behavior and improve website performance.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-[#262626] mb-2">Functionality Cookies</h3>
-              <p>
-                These cookies remember choices you make, such as language preferences, and provide enhanced and more personalized features.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-[#262626] mb-2">Targeting Cookies</h3>
-              <p>
-                These cookies may be placed on our site by advertising partners. They help create a profile of your interests and show you relevant ads on other websites.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Cookie Management */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Cookie Management</h2>
-          
-          <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">How to Control Cookies</h3>
-          <p className="mb-4">You can control cookies in several ways. You can:</p>
-          <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Delete cookies stored on your device</li>
-            <li>Set your browser to block cookies</li>
-            <li>Choose to accept or decline cookies when prompted</li>
-          </ul>
-          <p>
-            Please note that disabling certain cookies may affect website functionality or limit access to specific features.
-          </p>
-        </div>
-
-        {/* Third-Party Cookies */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Third-Party Cookies</h2>
-          <p className="mb-4">
-            We may use services provided by trusted third parties that use cookies, such as:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Google Analytics for website performance and analytics</li>
-            <li>PayPal for secure payment processing</li>
-            <li>Social media platforms for sharing and engagement</li>
-            <li>Advertising partners for targeted advertising</li>
-          </ul>
-          <p>
-            These third parties have their own privacy and cookie policies.
-          </p>
-        </div>
-
-        {/* Updates to This Policy */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Updates to This Policy</h2>
-          <p>
-            We may revise this Cookies Policy from time to time. Any changes will be posted on this page with an updated effective date.
-          </p>
-        </div>
-
-        {/* Contact Us */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Contact Us</h2>
-          <p className="mb-4">
-            If you have questions about our Cookies Policy, please contact us:
-          </p>
-          <BrandContactDetails />
-        </div>
-
-        {/* Important Note */}
-        <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 mt-10">
-          <h3 className="text-xl font-bold text-[#262626] mb-3">Important Note</h3>
-          <p>
-            By continuing to use our website, you agree to our use of cookies as described in this policy. If you do not agree, please adjust your browser settings accordingly.
-          </p>
-        </div>
+export default function CookiesPage() {
+  return (
+    <main className="min-h-screen bg-gray-50 py-12">
+      <div className="container mx-auto max-w-4xl px-4">
+        <header className="rounded-3xl bg-[#123E52] p-8 text-white sm:p-10"><h1 className="text-4xl font-bold">Cookies Policy</h1><p className="mt-4 text-white/75">Last updated: September 8, 2026</p></header>
+        <section className="mt-8 space-y-8 rounded-3xl border bg-white p-7 text-gray-700 sm:p-10">
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Essential storage</h2><p className="mt-3 leading-7">The store uses browser storage and essential cookies for functions such as the shopping cart, checkout state, security, administration, and remembering your cookie choice. These functions are needed to operate the service.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Optional analytics</h2><p className="mt-3 leading-7">If you select Accept, optional analytics may measure visits, pages viewed, device details, and shopping events so we can understand and improve the store. RoxanneJoiner currently uses Vercel Speed Insights and may use configured site or advertising analytics. Optional analytics is not loaded after you select Decline.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Payment services</h2><p className="mt-3 leading-7">Stripe or PayPal may set their own cookies when their payment service is presented or opened. Their use of data is governed by their own privacy and cookie notices.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Managing your choice</h2><p className="mt-3 leading-7">Use the cookie banner to accept or decline optional analytics. You may also clear stored site data in your browser to reset your choice. Blocking essential storage may prevent the cart or checkout from working correctly.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Contact</h2><div className="mt-3 rounded-2xl bg-[#F7F3E8] p-6"><BrandContactDetails /></div></div>
+        </section>
       </div>
-    </div>
-  </div>
-);
-
-export default CookiesPage; 
+    </main>
+  );
+}

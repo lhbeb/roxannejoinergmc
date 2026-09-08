@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getProductsBySeller } from '@/lib/supabase/sellers';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 
 export async function GET(
   request: NextRequest,
@@ -14,7 +15,7 @@ export async function GET(
 
     const products = await getProductsBySeller(id);
     
-    return NextResponse.json(products);
+    return NextResponse.json(products.filter(isPublicStoreProduct));
   } catch (error) {
     console.error('Error fetching seller products:', error);
     return NextResponse.json(

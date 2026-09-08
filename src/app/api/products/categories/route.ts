@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getProductsByCollection } from '@/lib/data';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,9 +15,9 @@ export async function GET(request: NextRequest) {
     // Rely exclusively on the centralized DB-level collection querying
     const products = await getProductsByCollection(requestedCollection);
 
-    return NextResponse.json(products);
+    return NextResponse.json(products.filter(isPublicStoreProduct));
   } catch (error) {
     console.error('Collection API Error:', error);
     return NextResponse.json({ error: 'Failed to get products by collection' }, { status: 500 });
   }
-} 
+}

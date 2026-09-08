@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import ClientHeader from "@/components/ClientHeader";
@@ -11,7 +10,7 @@ import CookieConsent from "@/components/CookieConsent";
 import Script from "next/script";
 import { Suspense } from "react";
 import VisitNotifier from "@/components/VisitNotifier";
-import FacebookPixel from "@/components/FacebookPixel";
+import OptionalAnalytics from "@/components/OptionalAnalytics";
 import { AdminRouteCheck, PublicRouteOnly, AdminRouteOnly, CheckoutRouteOnly } from "@/components/AdminRouteCheck";
 import GlobalErrorReporter from "@/components/GlobalErrorReporter";
 import LiveChatWidget from "@/components/LiveChatWidget";
@@ -102,9 +101,6 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={`${dmSans.variable} font-sans antialiased text-[#123E52] bg-[#F7F3E8]`}>
         <GlobalErrorReporter />
-        <Suspense fallback={null}>
-          <FacebookPixel />
-        </Suspense>
         <PublicRouteOnly>
           <VisitNotifier />
         </PublicRouteOnly>
@@ -195,6 +191,14 @@ export default function RootLayout({
               <main className="flex-grow">
                 {children}
               </main>
+              <nav aria-label="Checkout policies" className="border-t border-[#123E52]/10 bg-white px-4 py-5 text-center text-sm text-[#123E52]">
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                  <a href="/shipping-policy" className="underline underline-offset-4">Shipping</a>
+                  <a href="/return-policy" className="underline underline-offset-4">Returns</a>
+                  <a href="/terms" className="underline underline-offset-4">Terms</a>
+                  <a href="/contact" className="underline underline-offset-4">Contact</a>
+                </div>
+              </nav>
             </div>
           </CheckoutRouteOnly>
 
@@ -204,15 +208,8 @@ export default function RootLayout({
           </AdminRouteOnly>
         </ErrorBoundaryWrapper>
 
-        <AdminRouteCheck>
-          <Script
-            src="https://analyticsapp-five.vercel.app/tracker.js"
-            strategy="afterInteractive"
-            async
-          />
-        </AdminRouteCheck>
+        <AdminRouteCheck><OptionalAnalytics /></AdminRouteCheck>
         <LiveChatWidget />
-        <SpeedInsights />
       </body>
     </html>
   );

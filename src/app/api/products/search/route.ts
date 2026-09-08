@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { searchProducts } from '@/lib/data';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,7 +15,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Use Supabase search which includes slug, title, description, brand, and category
-    const filteredProducts = await searchProducts(query);
+    const filteredProducts = (await searchProducts(query)).filter(isPublicStoreProduct);
     
     const limitedProducts = filteredProducts.slice(0, limit);
 
@@ -30,4 +31,4 @@ export async function GET(request: NextRequest) {
     console.error('Search API Error:', error);
     return NextResponse.json({ error: 'Failed to search products' }, { status: 500 });
   }
-} 
+}

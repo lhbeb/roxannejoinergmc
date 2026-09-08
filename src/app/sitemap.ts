@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getAllProducts } from '@/lib/data';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://roxannejoiner.com';
@@ -36,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route.priority,
   }));
 
-  const productPages = products.map((product) => ({
+  const productPages = products.filter(isPublicStoreProduct).map((product) => ({
     url: `${baseUrl}/products/${encodeURIComponent(product.slug)}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,

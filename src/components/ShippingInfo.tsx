@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Truck, RefreshCw } from 'lucide-react';
-import { getMarket, getDeliveryRange } from '@/lib/markets';
+import { getMarket } from '@/lib/markets';
 
 interface ShippingInfoProps {
   className?: string;
@@ -9,7 +9,6 @@ interface ShippingInfoProps {
 
 const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarket }) => {
   const market = getMarket(targetMarket);
-  const deliveryRange = getDeliveryRange(market);
 
   return (
     <div className={`overflow-hidden rounded-[24px] border border-[#123E52]/15 bg-white ${className}`}>
@@ -35,7 +34,7 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
             </div>
             <div className="min-w-0">
               <p className="text-sm font-medium text-gray-500">Estimated delivery</p>
-              <p className="mt-1 text-sm font-semibold text-[#123E52]">Get it by {deliveryRange}</p>
+              <p className="mt-1 text-sm font-semibold text-[#123E52]">Estimated 6–11 business days</p>
               <p className="mt-1 text-sm text-[#397F86] font-medium">{market.freeShippingText}</p>
             </div>
           </div>
@@ -49,7 +48,7 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
             <div className="min-w-0">
               <p className="text-sm font-medium text-gray-500">Returns</p>
               <p className="mt-1 text-sm font-semibold text-[#123E52]">{market.returnsText}</p>
-              <p className="mt-1 text-sm text-[#397F86] font-medium">Hassle-free 30-day guarantee</p>
+              <p className="mt-1 text-sm text-[#397F86] font-medium">Eligible returns within 30 days</p>
             </div>
           </div>
         </div>

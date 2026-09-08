@@ -57,10 +57,10 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             </div>
             <div>
               <h3 className="font-bold text-[#123E52] text-lg mb-2">
-                Fast Processing
+                Order Processing
               </h3>
               <p className="text-gray-600 text-sm">
-                Orders placed before 2:00 PM EST begin fulfillment and pre-delivery inspection that same day.
+                Orders normally leave our fulfillment process within 1–2 business days after payment is confirmed.
               </p>
             </div>
           </div>
@@ -74,10 +74,10 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             </div>
             <div>
               <h3 className="font-bold text-[#123E52] text-lg mb-2">
-                30-Day Guarantee
+                30-Day Returns
               </h3>
               <p className="text-gray-600 text-sm">
-                Enjoy total confidence with our 30-day money-back return policy on all eligible purchases.
+                Eligible items may be returned by mail within 30 days. Conditions and shipping responsibility are explained in our return policy.
               </p>
             </div>
           </div>
@@ -91,10 +91,10 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             </div>
             <div>
               <h3 className="font-bold text-[#123E52] text-lg mb-2">
-                Live Carrier Tracking
+                Shipment Tracking
               </h3>
               <p className="text-gray-600 text-sm">
-                Real-time tracking updates delivered directly to your inbox from dispatch to your driveway.
+                When tracking is available, it is sent after dispatch so you can follow carrier updates.
               </p>
             </div>
           </div>

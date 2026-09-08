@@ -1,204 +1,28 @@
+import Link from 'next/link';
 import BrandContactDetails from '@/components/BrandContactDetails';
-import React from 'react';
 
-const TermsPage = () => {
-  const currentDate = new Date().toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
-
+export default function TermsPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 py-12">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold text-[#262626] mb-2">RoxanneJoiner Terms of Service</h1>
-        <p className="text-gray-600 mb-8">Last Updated: {currentDate}</p>
-        
-        <div className="prose max-w-none text-gray-700 space-y-8">
-          <p className="text-lg leading-relaxed">
-            Welcome to RoxanneJoiner. By accessing or using our website, marketplace, or services, you agree to be bound by these Terms of Service. Please read them carefully. If you do not agree, please discontinue using the site.
-          </p>
+    <main className="min-h-screen bg-gray-50 py-12">
+      <div className="container mx-auto max-w-4xl px-4">
+        <header className="rounded-3xl bg-[#123E52] p-8 text-white sm:p-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9BD4D3]">RoxanneJoiner</p>
+          <h1 className="mt-3 text-4xl font-bold">Terms of Service</h1>
+          <p className="mt-4 text-white/75">Last updated: September 8, 2026</p>
+        </header>
 
-          {/* Section 1: Overview */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">1. Overview</h2>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>RoxanneJoiner operates as a direct retailer and as a curated marketplace.</li>
-              <li>We source products through auctions, private sellers, liquidators, wholesalers, and other third-party suppliers.</li>
-              <li>We also allow approved private sellers to list items on our platform after a full inspection by our team.</li>
-              <li>All purchases made through RoxanneJoiner are processed under these Terms.</li>
-            </ul>
-          </div>
-
-          {/* Section 2: Account Terms */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">2. Account Terms</h2>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>You must be 18 years or older to use this service.</li>
-              <li>You must provide accurate and complete information during account creation.</li>
-              <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
-              <li>You must notify us immediately of any unauthorized access or security concerns.</li>
-            </ul>
-          </div>
-
-          {/* Section 3: Marketplace and Private Seller Terms */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">3. Marketplace and Private Seller Terms</h2>
-            <p className="mb-4">
-              RoxanneJoiner hosts a controlled marketplace where approved private sellers may offer products.
-            </p>
-
-            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.1 Seller Onboarding Process</h3>
-            <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>Private sellers must be screened and approved before listing items.</li>
-              <li>Sellers send their inventory to our warehouse, where it is inspected, authenticated, tested, and verified before any listing goes live.</li>
-            </ul>
-
-            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.2 Fulfillment Process</h3>
-            <p className="mb-2">When you purchase an item from a third-party seller:</p>
-            <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>It is clearly indicated on the product page.</li>
-              <li>The seller sends the item to our warehouse if it is not already stored with us.</li>
-              <li>Our inspection team confirms the condition, functionality, and price accuracy.</li>
-              <li>Only after passing inspection is the item shipped to the customer.</li>
-            </ul>
-            <p className="mb-4">
-              RoxanneJoiner reserves the right to reject, refund, or cancel any order if the item fails inspection.
-            </p>
-
-            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.3 Seller Responsibility</h3>
-            <p className="mb-2">Sellers on the RoxanneJoiner platform are responsible for:</p>
-            <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>The authenticity of their products</li>
-              <li>Providing accurate condition descriptions</li>
-              <li>Meeting our quality and safety standards</li>
-            </ul>
-            <p>
-              RoxanneJoiner is not responsible for inaccurate representations made by sellers, although we take all reasonable steps to verify product condition before shipment.
-            </p>
-          </div>
-
-          {/* Section 4: Product Terms */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">4. Product Terms</h2>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>We aim to provide accurate and detailed product descriptions.</li>
-              <li>We sell new, open-box, refurbished, and pre owned items, each clearly labeled.</li>
-              <li>Review each product listing for its condition and included equipment.</li>
-              <li>Product availability is not guaranteed until an order is processed.</li>
-              <li>Prices may change at any time due to market conditions and sourcing costs.</li>
-              <li>We reserve the right to modify, limit, or discontinue any product or listing.</li>
-            </ul>
-          </div>
-
-          {/* Section 5: Sourcing Transparency */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">5. Sourcing Transparency</h2>
-            <p className="mb-4">
-              By using our website, you acknowledge that RoxanneJoiner sources products through:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>Online auctions and bidding platforms</li>
-              <li>Private sellers and independent sourcers</li>
-              <li>Liquidation and return departments of major retailers</li>
-              <li>Garage sales, local auctions, and community sales</li>
-              <li>Wholesalers and bulk suppliers</li>
-            </ul>
-            <p>
-              These sourcing methods allow us to offer competitive pricing.
-            </p>
-            <p className="mt-2">
-              You agree that cosmetic variations, packaging differences, or shelf pull characteristics may occur with certain items unless stated otherwise.
-            </p>
-          </div>
-
-          {/* Section 6: Shipping Policy */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">6. Shipping Policy</h2>
-            <p className="mb-4">
-              Free standard shipping applies to all orders across the United States.
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Same-day shipping is available for orders placed before 2:00 PM EST.</li>
-              <li>Standard processing time is 0 to 1 business day.</li>
-              <li>Domestic USA delivery time is 5 to 9 business days.</li>
-              <li>All orders qualify for free standard shipping with no minimum spend required.</li>
-              <li>Tracking information is sent to the customer via email once the order ships.</li>
-            </ul>
-            <p className="mt-4">
-              RoxanneJoiner is not responsible for delays caused by carriers or incorrect shipping information provided by the customer.
-            </p>
-          </div>
-
-          {/* Section 7: Payment Terms */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">7. Payment Terms</h2>
-            <p className="mb-4">We accept the following payment methods:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Credit and debit cards</li>
-              <li>Visa, Mastercard, American Express</li>
-              <li>PayPal</li>
-              <li>Shop Pay</li>
-              <li>Apple Pay</li>
-            </ul>
-            <p className="mt-4">
-              All payments must be received in full before an order is processed.
-            </p>
-          </div>
-
-          {/* Section 8: Returns and Satisfaction Guarantee */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">8. Returns and Satisfaction Guarantee</h2>
-            <p className="mb-4">Your satisfaction is our priority.</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>We offer a 30 day hassle free return policy.</li>
-              <li>Items must be returned in the same condition received.</li>
-              <li>Refunds are issued after the item passes inspection at our warehouse.</li>
-              <li>Exchanges are available when inventory permits.</li>
-              <li>We work quickly to resolve any concerns, disputes, or issues.</li>
-            </ul>
-            <p className="mt-4">
-              Marketplace seller products also fall under this guarantee unless specifically stated otherwise.
-            </p>
-          </div>
-
-          {/* Section 9: Limitation of Liability */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">9. Limitation of Liability</h2>
-            <p className="mb-4">
-              RoxanneJoiner is not liable for indirect, incidental, punitive, or consequential damages arising from your use of our services, products, or platform.
-            </p>
-            <p>
-              However, we are committed to resolving legitimate customer concerns and will work with you to reach a fair and reasonable solution.
-            </p>
-          </div>
-
-          {/* Section 10: Fraud Prevention and Compliance */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">10. Fraud Prevention and Compliance</h2>
-            <p className="mb-4">
-              RoxanneJoiner monitors orders for unusual activity to protect customers and sellers.
-            </p>
-            <p className="mb-4">
-              We reserve the right to cancel or delay orders suspected of fraud or unauthorized use of payment methods.
-            </p>
-            <p>
-              Creating false accounts, listing products fraudulently, or misrepresenting product ownership is strictly prohibited.
-            </p>
-          </div>
-
-          {/* Section 11: Contact Information */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">11. Contact Information</h2>
-            <p className="mb-4">
-              If you have questions about these Terms of Service, please contact us.
-            </p>
-            <BrandContactDetails />
-          </div>
-        </div>
+        <section className="mt-8 space-y-8 rounded-3xl border bg-white p-7 text-gray-700 sm:p-10">
+          <div><h2 className="text-2xl font-bold text-[#123E52]">1. Store and product information</h2><p className="mt-3 leading-7">RoxanneJoiner sells the kayaks and paddling products displayed on this website. We aim to show accurate titles, descriptions, condition, included equipment, images, prices, currency, and availability. Please review the complete product page before ordering.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">2. Orders and availability</h2><p className="mt-3 leading-7">Submitting an order does not guarantee acceptance. We may cancel and refund an order if a product is unavailable, its price or description contains a material error, the delivery address cannot be served, or payment cannot be authorized. We will use the contact information supplied at checkout if action is required.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">3. Prices and payment</h2><p className="mt-3 leading-7">Prices are displayed in U.S. dollars. The order summary shows the product total, shipping charge, and any applicable amount before payment. Payment is processed through the secure payment option presented during checkout. Do not send payment outside the checkout instructions shown for your order.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">4. Shipping</h2><p className="mt-3 leading-7">Current coverage, shipping cost, handling time, transit estimates, address requirements, and tracking information are stated in our <Link href="/shipping-policy" className="font-semibold text-[#123E52] underline">Shipping Policy</Link>. Delivery dates are estimates unless expressly stated otherwise.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">5. Returns and refunds</h2><p className="mt-3 leading-7">Return eligibility, the return window, return shipping responsibility, item condition requirements, and refund timing are stated in our <Link href="/return-policy" className="font-semibold text-[#123E52] underline">Return & Refund Policy</Link>.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">6. Customer information</h2><p className="mt-3 leading-7">You must provide complete and accurate contact, billing, and delivery information. Our collection and use of personal information is described in the <Link href="/privacy-policy" className="font-semibold text-[#123E52] underline">Privacy Policy</Link>.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">7. Acceptable use</h2><p className="mt-3 leading-7">You may not misuse the website, attempt unauthorized access, interfere with its operation, submit fraudulent orders, or use another person&apos;s payment details without permission.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">8. Liability</h2><p className="mt-3 leading-7">Nothing in these terms limits rights that cannot lawfully be limited. To the extent permitted by law, RoxanneJoiner is not responsible for indirect or consequential loss arising from use of the website or products.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">9. Contact</h2><div className="mt-3 rounded-2xl bg-[#F7F3E8] p-6"><BrandContactDetails /></div></div>
+        </section>
       </div>
-    </div>
+    </main>
   );
-};
-
-export default TermsPage; 
+}

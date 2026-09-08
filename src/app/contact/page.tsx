@@ -121,7 +121,7 @@ export default function ContactPage() {
                         <option value="kayak-selection">Kayak Selection</option>
                         <option value="order-inquiry">Order & Delivery Status</option>
                         <option value="track-order">Track My Order</option>
-                        <option value="warranty-service">Warranty & Parts Support</option>
+                        <option value="product-support">Product Support</option>
                         <option value="return-refund">Return or Exchange</option>
                         <option value="partnership">Business Inquiry</option>
                         <option value="general">General Question</option>

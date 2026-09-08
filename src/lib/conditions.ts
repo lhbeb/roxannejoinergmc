@@ -175,7 +175,7 @@ export function formatValidSku(product: { sku?: string; slug?: string; id?: stri
     return cleaned;
   }
 
-  return `CAS-${cleaned || 'ITEM'}-${String(product.id || '101')}`.slice(0, 50);
+  return `RJ-${cleaned || 'ITEM'}-${String(product.id || '101')}`.slice(0, 50);
 }
 
 

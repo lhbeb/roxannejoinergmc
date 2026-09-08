@@ -1,211 +1,50 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Clock, Mail, MapPin, PackageCheck, ShieldCheck, Truck } from 'lucide-react';
+import { Clock, MapPin, PackageCheck, Truck } from 'lucide-react';
+import { storePolicy } from '@/config/storePolicy';
 
 export const metadata: Metadata = {
   title: 'Shipping Policy | RoxanneJoiner',
-  description:
-    'Official RoxanneJoiner Shipping Policy. Free standard shipping across the United States. Same-day processing for orders placed before 2:00 PM EST.',
+  description: 'RoxanneJoiner shipping coverage, costs, handling times, delivery estimates, and order tracking information.',
 };
 
-const timeline = [
-  ['Same-day orders', 'Ships same day when placed before 2:00 PM EST'],
-  ['Standard processing', '0-1 business day'],
-  ['Domestic USA delivery', '5-9 business days (Free Standard Shipping)'],
-];
-
-const policySections = [
-  {
-    title: 'Free Shipping (USA)',
-    items: [
-      'Free standard shipping on all orders across the United States',
-      'No minimum purchase requirement',
-      'Tracked shipping via premium logistics partners (USPS, FedEx, UPS, Freight Carriers)',
-    ],
-  },
-  {
-    title: 'Order Tracking',
-    items: [
-      'Automatic shipping confirmation email upon dispatch',
-      'Real-time package tracking link provided',
-      'Estimated delivery date visibility',
-      'Carrier milestone email updates',
-    ],
-  },
-  {
-    title: 'Shipping Destinations',
-    items: [
-      'We ship across all 50 US States nationwide',
-      'PO boxes supported for standard US deliveries',
-      'APO/FPO/DPO military addresses fully supported',
-      'Discreet, eco-friendly, protective packaging',
-    ],
-  },
-  {
-    title: 'Package Protection & Safety',
-    items: [
-      '100% full shipping insurance on all packages',
-      'Signature confirmation for high-value orders over $500',
-      'Weather-resistant outer mailers',
-      'Protective bubble/foam layering for fragile items',
-    ],
-  },
-];
+const totalMin = storePolicy.handlingDays.min + storePolicy.transitDays.min;
+const totalMax = storePolicy.handlingDays.max + storePolicy.transitDays.max;
 
 export default function ShippingPolicyPage() {
   const schemaMarkup = {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': 'https://roxannejoiner.com/shipping-policy',
-        'url': 'https://roxannejoiner.com/shipping-policy',
-        'name': 'Shipping Policy | RoxanneJoiner',
-        'description':
-          'RoxanneJoiner Shipping Policy: Free standard shipping across the United States. Same-day processing for orders placed before 2:00 PM EST.',
-      },
-      {
-        '@type': 'OfferShippingDetails',
-        '@id': 'https://roxannejoiner.com/shipping-policy#shipping-us',
-        'shippingDestination': {
-          '@type': 'DefinedRegion',
-          'addressCountry': 'US',
-        },
-        'shippingRate': {
-          '@type': 'MonetaryAmount',
-          'value': 0,
-          'currency': 'USD',
-        },
-        'deliveryTime': {
-          '@type': 'ShippingDeliveryTime',
-          'handlingTime': {
-            '@type': 'QuantitativeValue',
-            'minValue': 0,
-            'maxValue': 1,
-            'unitCode': 'DAY',
-          },
-          'transitTime': {
-            '@type': 'QuantitativeValue',
-            'minValue': 5,
-            'maxValue': 9,
-            'unitCode': 'DAY',
-          },
-          'cutoffTime': '14:00:00-05:00',
-        },
-      },
-    ],
+    '@type': 'OfferShippingDetails',
+    shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
+    shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'USD' },
+    deliveryTime: {
+      '@type': 'ShippingDeliveryTime',
+      handlingTime: { '@type': 'QuantitativeValue', minValue: storePolicy.handlingDays.min, maxValue: storePolicy.handlingDays.max, unitCode: 'DAY' },
+      transitTime: { '@type': 'QuantitativeValue', minValue: storePolicy.transitDays.min, maxValue: storePolicy.transitDays.max, unitCode: 'DAY' },
+    },
   };
 
   return (
-    <main className="min-h-screen bg-[#F5F7FB] py-12 sm:py-16">
-      {/* Schema.org OfferShippingDetails Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-      />
-
+    <main className="min-h-screen bg-[#F7F3E8] py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
       <div className="container mx-auto max-w-5xl px-4">
-        <section className="mb-10 rounded-2xl bg-[#123E52] px-6 py-8 text-[#F7F3E8] sm:px-8 sm:py-10 shadow-lg">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#397F86]/40 bg-[#397F86]/15 px-3.5 py-1.5 text-sm font-semibold text-[#F7F3E8]">
-            <Truck className="h-4 w-4" />
-            Fast & Free Shipping Across USA
-          </div>
-          <h1 className="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
-            Shipping Policy
-          </h1>
-          <p className="mt-5 max-w-3xl text-base leading-7 text-[#F7F3E8]/80 sm:text-lg">
-            At RoxanneJoiner, we focus on fast, reliable fulfillment with transparent delivery windows, free standard shipping across the United States, and real-time tracking from warehouse to door.
-          </p>
+        <section className="rounded-3xl bg-[#123E52] p-8 text-white shadow-lg sm:p-12">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#9BD4D3]">RoxanneJoiner delivery</p>
+          <h1 className="text-4xl font-bold sm:text-5xl">Shipping Policy</h1>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-white/85">Free standard shipping is included on eligible orders delivered to a serviceable United States address. This page states the same handling and transit estimates used in our product data.</p>
         </section>
 
-        <section className="mb-8 grid gap-4 md:grid-cols-3">
-          <div className="rounded-xl border border-[#123E52]/10 bg-white p-5 shadow-sm">
-            <Clock className="mb-4 h-6 w-6 text-[#123E52]" />
-            <h2 className="text-lg font-bold text-[#262626]">Order by 2:00 PM EST</h2>
-            <p className="mt-2 text-sm leading-6 text-gray-600">
-              Orders placed before the 2:00 PM EST cutoff are processed, packed, and shipped the same business day.
-            </p>
-          </div>
-          <div className="rounded-xl border border-[#123E52]/10 bg-white p-5 shadow-sm">
-            <PackageCheck className="mb-4 h-6 w-6 text-[#123E52]" />
-            <h2 className="text-lg font-bold text-[#262626]">Free Standard Shipping</h2>
-            <p className="mt-2 text-sm leading-6 text-gray-600">
-              Free shipping on all orders across the United States with no minimum spend required.
-            </p>
-          </div>
-          <div className="rounded-xl border border-[#123E52]/10 bg-white p-5 shadow-sm">
-            <ShieldCheck className="mb-4 h-6 w-6 text-[#123E52]" />
-            <h2 className="text-lg font-bold text-[#262626]">Insured Deliveries</h2>
-            <p className="mt-2 text-sm leading-6 text-gray-600">
-              All shipments include full insurance, protective packaging, and end-to-end tracking updates.
-            </p>
-          </div>
+        <section className="mt-8 grid gap-5 md:grid-cols-3">
+          <article className="rounded-2xl border border-[#123E52]/10 bg-white p-6"><Clock className="h-6 w-6 text-[#397F86]" /><h2 className="mt-4 text-xl font-bold text-[#123E52]">Handling</h2><p className="mt-2 text-gray-700">Orders normally leave our fulfillment process within {storePolicy.handlingDays.min}–{storePolicy.handlingDays.max} business days after payment is confirmed.</p></article>
+          <article className="rounded-2xl border border-[#123E52]/10 bg-white p-6"><Truck className="h-6 w-6 text-[#397F86]" /><h2 className="mt-4 text-xl font-bold text-[#123E52]">Transit</h2><p className="mt-2 text-gray-700">Standard transit is estimated at {storePolicy.transitDays.min}–{storePolicy.transitDays.max} business days after dispatch.</p></article>
+          <article className="rounded-2xl border border-[#123E52]/10 bg-white p-6"><PackageCheck className="h-6 w-6 text-[#397F86]" /><h2 className="mt-4 text-xl font-bold text-[#123E52]">Shipping cost</h2><p className="mt-2 text-gray-700">Standard shipping is free for eligible U.S. orders. Any different option or charge will be shown before payment.</p></article>
         </section>
 
-        <section className="mb-8 rounded-2xl border border-[#123E52]/10 bg-white p-6 shadow-sm sm:p-8">
-          <div className="flex flex-col gap-3 border-b border-gray-100 pb-5 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-[#262626]">Delivery Timelines</h2>
-              <p className="mt-2 text-sm text-gray-600">Same-day dispatch applies to orders placed before 2:00 PM EST on business days.</p>
-            </div>
-            <span className="inline-flex w-fit rounded-full bg-[#123E52] px-3.5 py-1 text-sm font-semibold text-[#F7F3E8]">
-              Same-day dispatch cutoff: 2:00 PM EST
-            </span>
-          </div>
-
-          <div className="mt-6 divide-y divide-gray-100">
-            {timeline.map(([label, value]) => (
-              <div key={label} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-center sm:justify-between">
-                <span className="font-semibold text-[#262626]">{label}</span>
-                <span className="text-sm font-medium text-gray-700 sm:text-right">{value}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="grid gap-5 md:grid-cols-2">
-          {policySections.map((section) => (
-            <div key={section.title} className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-              <h2 className="text-xl font-bold text-[#262626]">{section.title}</h2>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-gray-600">
-                {section.items.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#123E52]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </section>
-
-        <section className="mt-8 rounded-2xl border border-[#123E52]/10 bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-bold text-[#262626]">Need Help With Shipping?</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-gray-600">
-            If you have questions about your delivery or need assistance tracking a package, reach out to our support team:
-          </p>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            <div className="flex items-center gap-3 rounded-xl bg-[#F5F7FB] p-4">
-              <MapPin className="h-5 w-5 text-[#123E52]" />
-              <span className="text-sm font-medium text-[#262626]">United States</span>
-            </div>
-            <div className="flex items-center gap-3 rounded-xl bg-[#F5F7FB] p-4">
-              <Mail className="h-5 w-5 text-[#123E52]" />
-              <span className="text-sm font-medium text-[#262626]">Contact support</span>
-            </div>
-            <div className="flex items-center gap-3 rounded-xl bg-[#F5F7FB] p-4">
-              <Clock className="h-5 w-5 text-[#123E52]" />
-              <span className="text-sm font-medium text-[#262626]">Mon-Fri, 9 AM-5 PM EST</span>
-            </div>
-          </div>
-
-          <Link
-            href="/contact"
-            className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#123E52] px-5 py-3 text-sm font-semibold text-[#F7F3E8] transition hover:bg-[#0C2C3D]"
-          >
-            Contact Support
-          </Link>
+        <section className="mt-8 space-y-7 rounded-3xl border border-[#123E52]/10 bg-white p-7 text-gray-700 sm:p-10">
+          <div><h2 className="flex items-center gap-3 text-2xl font-bold text-[#123E52]"><MapPin className="h-6 w-6" />Coverage and address checks</h2><p className="mt-3 leading-7">We currently sell and ship within the United States. A complete, serviceable delivery address is required. If a carrier cannot serve the address or the order cannot be fulfilled, we will contact you and cancel and refund the order when necessary.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Delivery estimates</h2><p className="mt-3 leading-7">The typical combined estimate is {totalMin}–{totalMax} business days from payment confirmation. Weekends, public holidays, severe weather, carrier disruptions, and address corrections may extend delivery. An estimate is not a guaranteed arrival date.</p></div>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Tracking and order support</h2><p className="mt-3 leading-7">When tracking is available, it is sent after dispatch. Tracking events and delivery scans are supplied by the carrier. For an address correction or a delivery question, <Link href="/contact" className="font-semibold text-[#123E52] underline">contact RoxanneJoiner</Link> as soon as possible.</p></div>
+          <p className="border-t border-gray-200 pt-6 text-sm text-gray-500">Last updated: September 8, 2026</p>
         </section>
       </div>
     </main>

@@ -1,11 +1,11 @@
-import { isPaddlingProduct } from '@/lib/kayakCatalog';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 import { NextResponse } from 'next/server';
 import { getProducts } from '@/lib/data';
 
 export async function GET() {
   try {
     const products = await getProducts();
-    return NextResponse.json(products.filter(isPaddlingProduct));
+    return NextResponse.json(products.filter(isPublicStoreProduct));
   } catch (error) {
     console.error('Failed to get products:', error);
     return NextResponse.json(
@@ -13,4 +13,4 @@ export async function GET() {
       { status: 500 }
     );
   }
-} 
+}

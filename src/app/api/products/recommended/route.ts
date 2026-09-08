@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getRecommendedProducts } from '@/lib/supabase/products';
+import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,7 +12,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const products = await getRecommendedProducts(slug, 4);
-    return NextResponse.json(products);
+    return NextResponse.json(products.filter(isPublicStoreProduct));
   } catch (error) {
     console.error('Failed to get recommended products:', error);
     return NextResponse.json(

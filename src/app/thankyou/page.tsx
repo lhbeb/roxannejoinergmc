@@ -181,7 +181,7 @@ function ThankYouContent() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-medium text-[#262626]">Order Processing</h3>
-                  <p className="text-sm text-gray-600">We&apos;ll process your order within 24-48 hours</p>
+                  <p className="text-sm text-gray-600">We normally process your order within 1–2 business days</p>
                 </div>
               </div>
 
@@ -191,7 +191,7 @@ function ThankYouContent() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-medium text-[#262626]">Email Confirmation</h3>
-                  <p className="text-sm text-gray-600">You&apos;ll receive an email with your order details and tracking number</p>
+                  <p className="text-sm text-gray-600">You&apos;ll receive order updates and tracking information when available</p>
                 </div>
               </div>
 
