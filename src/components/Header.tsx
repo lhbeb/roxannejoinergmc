@@ -194,7 +194,7 @@ const Header = () => {
               {/* Logo - RoxanneJoiner Oval SVG */}
               <Link href="/" className="flex items-center space-x-2 flex-shrink-0 text-white hover:opacity-90 transition-opacity py-1">
                 <Image
-                  src="/logosvg.svg"
+                  src="/mainlogo.svg"
                   alt="RoxanneJoiner Logo"
                   width={180}
                   height={54}

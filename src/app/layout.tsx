@@ -89,7 +89,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="preload" href="/logosvg.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/mainlogo.svg" as="image" type="image/svg+xml" />
 
 
 
@@ -119,7 +119,7 @@ export default function RootLayout({
                 "@type": "Organization",
                 "name": "RoxanneJoiner",
                 "url": "https://roxannejoiner.com",
-                "logo": "https://roxannejoiner.com/logosvg.svg",
+                "logo": "https://roxannejoiner.com/mainlogo.svg",
                 "description": "RoxanneJoiner - Kayaks & Paddling Gear. Discover kayaks and paddling essentials.",
 
               })
