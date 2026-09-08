@@ -73,7 +73,7 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-[#F7F3E8]">
-      <div className="container relative z-10 mx-auto px-4 py-12 md:py-16">
+      <div className="container relative z-10 mx-auto px-4 py-6 md:py-8">
         <div className="mx-auto grid w-full max-w-[1120px] overflow-hidden rounded-2xl shadow-xl min-h-[500px] md:grid-cols-[1fr_1fr] md:items-stretch border border-[#123E52]/10">
           {/* Content panel */}
           <div className="order-2 flex w-full flex-col justify-center bg-[#123E52] p-6 sm:p-8 md:order-1 md:p-12 lg:p-14 text-[#F7F3E8]">
