@@ -188,7 +188,7 @@ const Header = () => {
           }`}
       >
         <div suppressHydrationWarning={true} className="bg-[#123E52] text-white">
-          <div suppressHydrationWarning={true} className="container mx-auto px-4 py-2 sm:py-2.5 lg:py-3">
+          <div suppressHydrationWarning={true} className="container mx-auto px-4 py-3 sm:py-4 lg:py-5">
             <div suppressHydrationWarning={true} className="flex items-center justify-between gap-4 sm:gap-6">
               
               {/* Logo - RoxanneJoiner Oval SVG */}
