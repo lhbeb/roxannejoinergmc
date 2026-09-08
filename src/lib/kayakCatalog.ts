@@ -1,5 +1,4 @@
 import type { Product } from '@/types/product';
-import { isMerchantEligibleCheckoutFlow } from '@/config/storePolicy';
 
 /** Keep copied legacy inventory out of the kayak storefront. */
 export function isPaddlingProduct(product: Product): boolean {
@@ -17,7 +16,6 @@ export function isPublicStoreProduct(product: Product): boolean {
     product.published !== false &&
     Boolean(product.slug && product.title && product.images?.[0]) &&
     Number.isFinite(Number(product.price)) &&
-    Number(product.price) > 0 &&
-    isMerchantEligibleCheckoutFlow(product.checkoutFlow)
+    Number(product.price) > 0
   );
 }

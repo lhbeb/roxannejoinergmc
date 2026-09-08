@@ -9,15 +9,3 @@ export const storePolicy = {
   returnMethod: 'By mail',
   refundProcessingDays: 5,
 } as const;
-
-export const merchantEligibleCheckoutFlows = [
-  'stripe',
-  'paypal-direct',
-  'paypal-api',
-] as const;
-
-export function isMerchantEligibleCheckoutFlow(flow?: string): boolean {
-  return merchantEligibleCheckoutFlows.includes(
-    flow as (typeof merchantEligibleCheckoutFlows)[number],
-  );
-}

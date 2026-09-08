@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAllProducts } from '@/lib/data';
 import { formatValidSku, mapConditionToGmc } from '@/lib/conditions';
 import { isPublicStoreProduct } from '@/lib/kayakCatalog';
-import { isMerchantEligibleCheckoutFlow, storePolicy } from '@/config/storePolicy';
+import { storePolicy } from '@/config/storePolicy';
 import type { Product } from '@/types/product';
 
 const BASE_URL = 'https://roxannejoiner.com';
@@ -46,8 +46,7 @@ function isFeedEligible(product: Product): boolean {
     Number.isFinite(Number(product.price)) &&
     Number(product.price) > 0 &&
     (product.currency || 'USD').toUpperCase() === storePolicy.currency &&
-    isPublicStoreProduct(product) &&
-    isMerchantEligibleCheckoutFlow(product.checkoutFlow)
+    isPublicStoreProduct(product)
   );
 }
 
