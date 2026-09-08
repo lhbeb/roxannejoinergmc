@@ -93,6 +93,18 @@ export default function SellerPageClient({ seller }: Props) {
             <div className="flex-1 text-center md:text-left">
               <div className="flex flex-col md:flex-row items-center md:items-end gap-3 mb-2">
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{seller.name}</h1>
+                <div className="relative group flex">
+                  <div className="cursor-help flex items-center gap-1.5 bg-[#397F86] text-white px-2.5 py-1 rounded-full text-xs font-semibold backdrop-blur-sm border border-[#397F86]/50 transition-colors hover:bg-[#397F86]/90">
+                    <Star className="w-3 h-3 fill-current" />
+                    Star Seller
+                  </div>
+                  <div className="absolute top-full mt-3 left-0 md:left-auto md:right-auto w-72 p-4 bg-white text-gray-600 text-sm leading-relaxed rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 transform origin-top translate-y-2 group-hover:translate-y-0">
+                    <div className="font-bold mb-1.5 flex items-center gap-1.5 text-[#262626]">
+                      <Star className="w-4 h-4 text-[#123E52] fill-[#123E52]" /> Star Seller
+                    </div>
+                    Star Sellers have an outstanding track record for providing a great customer experience – they consistently earned 5-star reviews, dispatched orders on time, and replied quickly to any messages they received.
+                  </div>
+                </div>
               </div>
               
               <p className="text-[#F7F3E8]/75 font-medium mb-4 flex items-center justify-center md:justify-start gap-2">
