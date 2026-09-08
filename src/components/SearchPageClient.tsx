@@ -11,17 +11,7 @@ interface SearchPageClientProps {
   initialCategory?: string;
 }
 
-const CATALOG_CATEGORIES = [
-  "Blowers",
-  "Hardware",
-  "Lawn Mowers",
-  "Pressure Washers",
-  "Swimming Pools",
-  "Bikes",
-  "Electric Scooters",
-  "Tents",
-  "Vacuum Cleaners",
-] as const;
+const CATALOG_CATEGORIES = ["Kayaks", "Recreational Kayaks", "Fishing Kayaks", "Tandem Kayaks", "Touring Kayaks", "Inflatable Kayaks", "Paddles", "Kayak Accessories"] as const;
 
 function getExactCatalogCategory(value: string): string {
   const normalizedValue = value.trim().toLowerCase();
@@ -140,7 +130,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
   const searchParams = useSearchParams();
   const queryParam = searchParams.get("query") || initialQuery || "";
   const categoryParam = searchParams.get("category") || initialCategory || "";
-  // Old and cached navbar links used `?query=Lawn Mowers`. Treat known catalog
+  // Old and cached navbar links used `?query=Kayaks`. Treat known catalog
   // names as exact categories so accessory copy cannot leak into the results.
   const exactCategory = categoryParam.trim() || getExactCatalogCategory(queryParam);
   const activeTerm = exactCategory || queryParam;
@@ -212,7 +202,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="h-12 w-12 text-[#233F31] animate-spin mx-auto mb-4" />
+          <Loader2 className="h-12 w-12 text-[#123E52] animate-spin mx-auto mb-4" />
           <p className="text-gray-600 text-lg">Loading &quot;{activeTerm}&quot;...</p>
           <p className="text-gray-500 text-sm mt-2">Finding products in our database</p>
         </div>
@@ -278,7 +268,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
                   className={`px-4 py-2 rounded-lg ${
                     currentPage === 1
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#233F31]/10"
+                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#123E52]/10"
                   }`}
                 >
                   Previous
@@ -292,7 +282,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
                   className={`px-4 py-2 rounded-lg ${
                     currentPage === totalPages
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#233F31]/10"
+                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#123E52]/10"
                   }`}
                 >
                   Next

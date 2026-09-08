@@ -142,12 +142,12 @@ export default function BulkImportPage() {
         )}
 
         {uploadProgress && (
-          <div className="mb-6 p-4 bg-[#090A28]/5 border border-[#090A28]/20 rounded-lg">
+          <div className="mb-6 p-4 bg-[#123E52]/5 border border-[#123E52]/20 rounded-lg">
             <div className="flex items-center gap-3">
-              <Loader2 className="h-5 w-5 text-[#06092a] animate-spin flex-shrink-0" />
+              <Loader2 className="h-5 w-5 text-[#0C2C3D] animate-spin flex-shrink-0" />
               <div className="flex-1">
-                <div className="text-sm font-semibold text-[#1c2070]">Processing...</div>
-                <div className="text-sm text-[#1c2070]">{uploadProgress}</div>
+                <div className="text-sm font-semibold text-[#0C2C3D]">Processing...</div>
+                <div className="text-sm text-[#0C2C3D]">{uploadProgress}</div>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@ export default function BulkImportPage() {
   "price": 99.99,
   "images": ["img1.jpg", "img2.png"],
   "condition": "New",
-  "category": "Electronics",
+  "category": "Kayaks",
   "brand": "BrandX",
   "checkoutLink": "https://..."
 }`}
@@ -243,7 +243,7 @@ export default function BulkImportPage() {
             className={`
                 border-2 border-dashed rounded-lg p-12 text-center transition-colors
                 ${dragActive
-                ? 'border-[#090A28] bg-[#090A28]/5'
+                ? 'border-[#123E52] bg-[#123E52]/5'
                 : 'border-gray-300 hover:border-gray-400 bg-gray-50'
               }
                 ${uploading ? 'opacity-50 pointer-events-none' : 'cursor-pointer'}
@@ -261,7 +261,7 @@ export default function BulkImportPage() {
 
             {uploading ? (
               <div className="space-y-4">
-                <Loader2 className="h-12 w-12 mx-auto text-[#06092a] animate-spin" />
+                <Loader2 className="h-12 w-12 mx-auto text-[#0C2C3D] animate-spin" />
                 <div>
                   <p className="text-lg font-medium text-gray-700">Processing...</p>
                   <p className="text-sm text-gray-500 mt-2">{uploadProgress || 'Please wait'}</p>

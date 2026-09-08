@@ -1,27 +1,13 @@
 export const PRODUCT_COLLECTION_OPTIONS = [
-  { value: 'lawn-garden', label: 'Lawn & Garden' },
-  { value: 'power-tools', label: 'Power Tools & Equipment' },
-  { value: 'electronics', label: 'Electronics' },
+  { value: 'kayaks', label: 'Kayaks' },
+  { value: 'paddles', label: 'Paddles' },
+  { value: 'kayak-accessories', label: 'Kayak Accessories' },
 ] as const;
 
 export function getCollectionsForCategory(category: string): string[] {
   const normalized = category.toLowerCase().trim();
-
-  if (
-    /mower|bike|bicycle|ebike|e-bike|scooter|tent|pool|swimming|trimmer|blower/.test(
-      normalized,
-    )
-  ) {
-    return ['lawn-garden'];
-  }
-
-  if (/pressure washer|vacuum|power|generator|tool|hardware/.test(normalized)) {
-    return ['power-tools'];
-  }
-
-  if (/console|electronic|camera/.test(normalized)) {
-    return ['electronics'];
-  }
-
-  return ['lawn-garden'];
+  if (/accessor|gear|vest|storage|bag|rack/.test(normalized)) return ['kayak-accessories'];
+  if (/paddle/.test(normalized)) return ['paddles'];
+  if (/kayak/.test(normalized)) return ['kayaks'];
+  return [];
 }

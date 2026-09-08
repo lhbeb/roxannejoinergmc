@@ -1,3 +1,4 @@
+import { isPaddlingProduct } from '@/lib/kayakCatalog';
 import React, { Suspense } from 'react';
 import Hero from '@/components/Hero';
 import SameDayShipping from '@/components/SameDayShipping';
@@ -11,21 +12,27 @@ import ScrollToTop from '@/components/ScrollToTop';
 import { FEATURED_PRODUCT_LIMIT } from '@/config/products';
 
 export default async function HomePage() {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    return <><Hero /><section id="featured" className="mx-auto max-w-4xl px-6 py-16 text-center"><h2 className="mb-4 text-3xl font-bold text-[#123E52]">Our Collection Is Taking Shape</h2><p className="text-gray-600">RoxanneJoiner kayaks and paddling gear are coming soon. Find your inspiration on the water.</p></section></>;
+  }
   try {
-    const [featuredProducts, products] = await Promise.all([
+    const [featuredRows, productRows] = await Promise.all([
       getFeaturedProducts(),
       getProducts(),
     ]);
 
-    const golfBags = products.filter(p =>
-      p.category?.toLowerCase().includes('bag') ||
-      p.title?.toLowerCase().includes('bag')
+    const products = productRows.filter(isPaddlingProduct);
+    const featuredProducts = featuredRows.filter(isPaddlingProduct);
+
+    const kayaks = products.filter(p =>
+      p.category?.toLowerCase().includes('kayak') ||
+      p.title?.toLowerCase().includes('kayak')
     );
 
     const accessoriesAndParts = products.filter((product) =>
-      product.category?.toLowerCase().includes('hardware') ||
+      product.category?.toLowerCase().includes('paddle') ||
       product.category?.toLowerCase().includes('accessories') ||
-      product.collections?.includes('power-tools')
+      product.collections?.includes('kayak-accessories')
     );
 
   return (
@@ -40,7 +47,7 @@ export default async function HomePage() {
       <CategorySection
         products={featuredProducts.length > 0 ? featuredProducts : products}
         title="Featured RoxanneJoiner Lineup"
-        subtitle="Precision engineered golf carts built for golf courses, resort communities, and private estates."
+        subtitle="Explore kayaks and gear for your next day on the water."
         maxDisplay={FEATURED_PRODUCT_LIMIT}
         shuffleForVisitor
         visitorShuffleKey="home-featured"
@@ -48,19 +55,19 @@ export default async function HomePage() {
 
       <SameDayShipping />
 
-      {golfBags.length > 0 && (
+      {kayaks.length > 0 && (
         <Suspense fallback={null}>
           <ProductGrid
-            products={golfBags}
-            sectionId="roxannejoiner-golf-bags"
-            title="Premium RoxanneJoiner Golf Bags"
+            products={kayaks}
+            sectionId="roxannejoiner-kayaks"
+            title="Explore RoxanneJoiner Kayaks"
             editorialCard={{
-              title: 'Master Every Fairway',
+              title: 'Make Time for the Water',
               description:
-                'RoxanneJoiner golf bags combine lightweight durability, superior club organization, and premium materials. Experience effortless carrying and smart storage designed for the modern golfer.',
+                'Discover the RoxanneJoiner kayak collection. Compare available models and find the right fit for your paddling plans.',
             }}
             randomizeForVisitor
-            visitorShuffleKey="home-golf-bags"
+            visitorShuffleKey="home-kayaks"
           />
         </Suspense>
       )}
@@ -90,7 +97,7 @@ export default async function HomePage() {
       <>
         <Hero />
         <div className="container mx-auto px-4 py-16 text-center">
-          <h2 className="text-2xl font-bold text-[#233F31] mb-4">Unable to load products</h2>
+          <h2 className="text-2xl font-bold text-[#123E52] mb-4">Unable to load products</h2>
           <p className="text-gray-600">Please refresh the page or try again later.</p>
         </div>
       </>

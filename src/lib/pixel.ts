@@ -13,7 +13,7 @@ export function trackPixelEvent(
   options?: { eventID?: string },
   maxRetries = 50
 ): void {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || !process.env.NEXT_PUBLIC_META_PIXEL_ID) return;
 
   let attempts = 0;
 

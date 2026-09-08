@@ -76,23 +76,17 @@ function shuffleReviews(reviews: Review[]): Review[] {
   return shuffled;
 }
 
-function isLawnMowerText(value: unknown): boolean {
-  return typeof value === 'string' && /\bmowers?\b/i.test(value);
+function isKayakText(value: unknown): boolean {
+  return typeof value === 'string' && /\b(kayaks?|paddles?|paddling)\b/i.test(value);
 }
 
-function isLawnMowerReview(review: Review): boolean {
-  return isLawnMowerText(review.productTitle) || isLawnMowerText(review.productSlug);
+function isKayakReview(review: Review): boolean {
+  return isKayakText(review.productTitle) || isKayakText(review.productSlug);
 }
 
 function shouldIncludeNativeSellerReview(review: Review): boolean {
-  const hasProductReference = [review.productTitle, review.productSlug].some(
-    (value) => typeof value === 'string' && value.trim().length > 0,
-  );
-
-  // Seller-level reviews are commonly stored without a product reference. Keep
-  // those reviews in the store feed, while continuing to reject reviews that
-  // are explicitly tagged to a non-lawn-mower legacy product.
-  return !hasProductReference || isLawnMowerReview(review);
+  // Only show reviews explicitly associated with kayaking products.
+  return isKayakReview(review);
 }
 
 export async function getHomeReviewsFeed(limit: number = 6): Promise<{
@@ -125,7 +119,7 @@ export async function getHomeReviewsFeed(limit: number = 6): Promise<{
       .filter(
         (product) =>
           product.published !== false &&
-          [product.title, product.slug, product.category].some(isLawnMowerText),
+          [product.title, product.slug, product.category].some(isKayakText),
       )
       .flatMap((product) =>
         (Array.isArray(product.reviews) ? product.reviews : []).map((review) => ({

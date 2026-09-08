@@ -105,7 +105,7 @@ const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ currentProduc
               </div>
 
               <div className="p-4 space-y-3">
-                <h3 className="font-semibold text-[#233F31] group-hover:text-[#789676] transition-colors line-clamp-2 sm:line-clamp-1">
+                <h3 className="font-semibold text-[#123E52] group-hover:text-[#397F86] transition-colors line-clamp-2 sm:line-clamp-1">
                   {product.title}
                 </h3>
 
@@ -115,14 +115,14 @@ const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ currentProduc
                   </span>
                 </p>
 
-                <div className="text-xl font-bold text-[#233F31]">${new Intl.NumberFormat('en-US').format(product.price)}</div>
+                <div className="text-xl font-bold text-[#123E52]">${new Intl.NumberFormat('en-US').format(product.price)}</div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-2">
-                  <div className="flex items-center text-sm font-medium text-[#789676]">
+                  <div className="flex items-center text-sm font-medium text-[#397F86]">
                     <Eye className="h-4 w-4 mr-1" />
                     <span>View Details</span>
                   </div>
-                  <div className="h-8 w-8 bg-[#233F31] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ShoppingCart className="h-4 w-4 text-[#FAF6EB]" />
+                  <div className="h-8 w-8 bg-[#123E52] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <ShoppingCart className="h-4 w-4 text-[#F7F3E8]" />
                   </div>
                 </div>
               </div>

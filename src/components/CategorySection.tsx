@@ -16,11 +16,11 @@ interface CategorySectionProps {
 
 const CategorySection: React.FC<CategorySectionProps> = ({
   products,
-  title = 'Featured RoxanneJoiner Golf Carts',
-  subtitle = 'Engineered for smooth rides, exceptional battery life, and modern comfort.',
+  title = 'Featured RoxanneJoiner Kayaks',
+  subtitle = 'Discover kayaks and paddling gear for your next adventure.',
   maxDisplay = 8,
   shuffleForVisitor = false,
-  visitorShuffleKey = 'home-featured-carts',
+  visitorShuffleKey = 'home-featured-kayaks',
 }) => {
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>(() =>
     products.slice(0, maxDisplay),
@@ -46,11 +46,11 @@ const CategorySection: React.FC<CategorySectionProps> = ({
   }
 
   return (
-    <section id="featured-carts" className="py-16 bg-white">
+    <section id="featured" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="w-full max-w-7xl mx-auto">
           <div className="mb-10 text-left">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#233F31] mb-2 font-heading">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#123E52] mb-2 font-heading">
               {title}
             </h2>
             <p className="max-w-2xl text-base sm:text-lg text-gray-600">
@@ -63,7 +63,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({
               <ProductCard
                 key={product.id}
                 product={product}
-                cardBackground="bg-[#FAF6EB]/40"
+                cardBackground="bg-[#F7F3E8]/40"
                 showFullImage
               />
             ))}

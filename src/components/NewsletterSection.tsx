@@ -51,12 +51,12 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="bg-[#233F31] py-16 px-4">
+    <section className="bg-[#123E52] py-16 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <div className="flex justify-center mb-6">
-            <div className="bg-[#789676]/30 border border-[#789676]/40 backdrop-blur-sm rounded-full p-3.5">
-              <Mail className="h-7 w-7 text-[#FAF6EB]" />
+            <div className="bg-[#397F86]/30 border border-[#397F86]/40 backdrop-blur-sm rounded-full p-3.5">
+              <Mail className="h-7 w-7 text-[#F7F3E8]" />
             </div>
           </div>
 
@@ -64,8 +64,8 @@ const NewsletterSection = () => {
             Join the RoxanneJoiner VIP Club
           </h2>
 
-          <p className="text-base md:text-lg text-[#FAF6EB]/85 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Get exclusive access to new golf cart releases, custom build options, lithium battery upgrades, and seasonal promotions.
+          <p className="text-base md:text-lg text-[#F7F3E8]/85 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Get updates on RoxanneJoiner kayaks, paddling gear, and seasonal promotions.
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -79,7 +79,7 @@ const NewsletterSection = () => {
                     if (error) setError('');
                   }}
                   placeholder="Your email address"
-                  className="w-full px-4 py-3 rounded-full border-0 bg-[#FAF6EB] text-[#233F31] placeholder-[#233F31]/60 focus:outline-none focus:ring-2 focus:ring-[#789676] transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-full border-0 bg-[#F7F3E8] text-[#123E52] placeholder-[#123E52]/60 focus:outline-none focus:ring-2 focus:ring-[#397F86] transition-all duration-200"
                   disabled={isSubmitting || isSuccess}
                 />
               </div>
@@ -87,7 +87,7 @@ const NewsletterSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting || isSuccess}
-                className="bg-[#789676] hover:bg-[#688566] text-white disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 rounded-full font-bold transition-all duration-200 flex items-center justify-center gap-2 min-w-[140px] shadow-md"
+                className="bg-[#397F86] hover:bg-[#306E76] text-white disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 rounded-full font-bold transition-all duration-200 flex items-center justify-center gap-2 min-w-[140px] shadow-md"
               >
                 {isSubmitting ? (
                   <>
@@ -125,7 +125,7 @@ const NewsletterSection = () => {
             )}
           </form>
 
-          <p className="text-[#FAF6EB]/60 text-xs sm:text-sm mt-6">
+          <p className="text-[#F7F3E8]/60 text-xs sm:text-sm mt-6">
             We value your privacy. Unsubscribe with one click anytime.
           </p>
         </div>

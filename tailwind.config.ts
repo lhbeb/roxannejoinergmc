@@ -9,18 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#233F31', // Deep Forest Green - main brand color
-        secondary: '#789676', // Sage Green - secondary accent
-        accent: '#789676', // Sage Green accent
-        cream: '#FAF6EB', // Warm cream background
-        'brand-dark': '#233F31', // Deep Forest Green
-        'brand-sage': '#789676', // Sage Green
-        'brand-cream': '#FAF6EB', // Cream
-        text: '#233F31', // Deep Forest Green text / dark neutral
-        'text-gray': '#556B5C', // Muted green-gray text
-        'bg-light': '#FAF6EB', // Warm cream light background
-        'border-gray': '#E2DDD0', // Warm light border
-        'nav-gray': '#789676', // Navigation bar sage green
+        primary: '#123E52', // Deep Forest Green - main brand color
+        secondary: '#397F86', // Sage Green - secondary accent
+        accent: '#397F86', // Sage Green accent
+        cream: '#F7F3E8', // Warm cream background
+        'brand-dark': '#123E52', // Deep Forest Green
+        'brand-sage': '#397F86', // Sage Green
+        'brand-cream': '#F7F3E8', // Cream
+        text: '#123E52', // Deep Forest Green text / dark neutral
+        'text-gray': '#526B76', // Muted green-gray text
+        'bg-light': '#F7F3E8', // Warm cream light background
+        'border-gray': '#DDDCD3', // Warm light border
+        'nav-gray': '#397F86', // Navigation bar sage green
       },
       fontFamily: {
         sans: ['var(--font-dm-sans)', 'sans-serif'],

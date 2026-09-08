@@ -135,7 +135,7 @@ export default function QuickAddProductPage() {
         "/products/example-product/img1.webp"
       ],
       listedBy: "walid",
-      collections: ["electronics"],
+      collections: ["kayaks"],
       rating: 4.5,
       reviewCount: 10,
       inStock: true,
@@ -230,10 +230,10 @@ export default function QuickAddProductPage() {
                 />
               </div>
 
-              <div className="bg-[#090A28]/5 border border-[#090A28]/20 rounded-lg p-4">
-                <div className="text-sm text-[#1c2070]">
+              <div className="bg-[#123E52]/5 border border-[#123E52]/20 rounded-lg p-4">
+                <div className="text-sm text-[#0C2C3D]">
                   <div className="font-semibold mb-2">Required Fields:</div>
-                  <ul className="list-disc list-inside space-y-1 text-[#1c2070]">
+                  <ul className="list-disc list-inside space-y-1 text-[#0C2C3D]">
                     <li>slug, title, description, price</li>
                     <li>brand, category, condition</li>
                     <li>checkoutLink (or checkout_link)</li>
@@ -241,7 +241,7 @@ export default function QuickAddProductPage() {
                     <li>collections (array of strings)</li>
                     <li>images (array of image URLs)</li>
                   </ul>
-                  <div className="mt-3 text-[#090A28]">
+                  <div className="mt-3 text-[#123E52]">
                     <strong>Optional:</strong> payeeEmail, reviews, meta, rating, reviewCount, currency, inStock
                   </div>
                 </div>

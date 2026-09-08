@@ -48,7 +48,7 @@ export default function Error({
         <div className="flex gap-3 justify-center">
           <button
             onClick={reset}
-            className="px-5 py-2.5 bg-[#090A28] text-white text-sm font-semibold rounded-xl hover:bg-[#1c2070] transition-colors"
+            className="px-5 py-2.5 bg-[#123E52] text-white text-sm font-semibold rounded-xl hover:bg-[#0C2C3D] transition-colors"
           >
             Try again
           </button>

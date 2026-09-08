@@ -1,3 +1,4 @@
+import BrandContactDetails from '@/components/BrandContactDetails';
 import React from 'react';
 
 const TermsPage = () => {
@@ -83,7 +84,7 @@ const TermsPage = () => {
             <ul className="list-disc pl-6 space-y-2">
               <li>We aim to provide accurate and detailed product descriptions.</li>
               <li>We sell new, open-box, refurbished, and pre owned items, each clearly labeled.</li>
-              <li>All used or open-box electronics are tested prior to sale.</li>
+              <li>Review each product listing for its condition and included equipment.</li>
               <li>Product availability is not guaranteed until an order is processed.</li>
               <li>Prices may change at any time due to market conditions and sourcing costs.</li>
               <li>We reserve the right to modify, limit, or discontinue any product or listing.</li>
@@ -192,26 +193,7 @@ const TermsPage = () => {
             <p className="mb-4">
               If you have questions about these Terms of Service, please contact us.
             </p>
-            <div className="bg-gray-50 rounded-lg p-6 space-y-3">
-              <div>
-                <div className="font-medium text-[#262626] mb-1">Phone:</div>
-                <div className="text-gray-600">+19129231747</div>
-              </div>
-              <div>
-                <div className="font-medium text-[#262626] mb-1">Email:</div>
-                <div className="text-gray-600">contact@roxannejoiner.com</div>
-              </div>
-              <div>
-                <div className="font-medium text-[#262626] mb-1">Business Address:</div>
-                <div className="text-gray-600">1731 Matthews Ave APT 4A, Bronx, New York 10462, United States</div>
-              </div>
-              <div>
-                <div className="font-medium text-[#262626] mb-1">Hours:</div>
-                <div className="text-gray-600">Monday to Friday, 9:00 AM to 5:00 PM EST</div>
-                <div className="text-gray-600">Saturday, 10:00 AM to 3:00 PM EST</div>
-                <div className="text-gray-600">Sunday, Closed</div>
-              </div>
-            </div>
+            <BrandContactDetails />
           </div>
         </div>
       </div>

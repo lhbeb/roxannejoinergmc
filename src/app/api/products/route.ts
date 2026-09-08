@@ -1,10 +1,11 @@
+import { isPaddlingProduct } from '@/lib/kayakCatalog';
 import { NextResponse } from 'next/server';
 import { getProducts } from '@/lib/data';
 
 export async function GET() {
   try {
     const products = await getProducts();
-    return NextResponse.json(products);
+    return NextResponse.json(products.filter(isPaddlingProduct));
   } catch (error) {
     console.error('Failed to get products:', error);
     return NextResponse.json(

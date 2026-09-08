@@ -25,9 +25,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "RoxanneJoiner - Premium Electric & Luxury Golf Carts",
-  description: "Explore premium electric golf carts, luxury 4-passenger and 6-passenger carts, and custom utility vehicles at RoxanneJoiner. Engineered for performance, comfort, and reliability with nationwide delivery.",
-  keywords: "RoxanneJoiner, golf carts, electric golf carts, luxury golf carts, street legal golf carts, 4 seater golf carts, 6 passenger golf cart, custom golf carts, golf cart parts, lithium golf carts",
+  title: "RoxanneJoiner - Kayaks & Paddling Gear",
+  description: "Discover RoxanneJoiner, a kayak brand for life on the water. Explore kayaks and paddling gear for your next adventure.",
+  keywords: "RoxanneJoiner, kayaks, kayaking, paddling, kayak accessories, paddles",
   authors: [{ name: "RoxanneJoiner" }],
   creator: "RoxanneJoiner",
   publisher: "RoxanneJoiner",
@@ -38,16 +38,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://roxannejoiner.com"),
   openGraph: {
-    title: "RoxanneJoiner - Premium Electric & Luxury Golf Carts",
-    description: "Shop premium electric golf carts, luxury 4-passenger and 6-passenger models, and accessories at RoxanneJoiner.",
+    title: "RoxanneJoiner - Kayaks & Paddling Gear",
+    description: "Explore RoxanneJoiner kayaks and paddling accessories.",
     url: "https://roxannejoiner.com",
     siteName: "RoxanneJoiner",
     images: [
       {
-        url: "/bg.png",
+        url: "/kayak-hero.png",
         width: 1200,
-        height: 630,
-        alt: "RoxanneJoiner - Premium Electric Golf Carts",
+        height: 900,
+        alt: "RoxanneJoiner - Kayaks for Your Next Adventure",
       },
     ],
     locale: "en_US",
@@ -55,9 +55,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RoxanneJoiner - Premium Electric & Luxury Golf Carts",
-    description: "Shop premium electric golf carts, luxury 4-passenger and 6-passenger models, and accessories at RoxanneJoiner.",
-    images: ["/bg.png"],
+    title: "RoxanneJoiner - Kayaks & Paddling Gear",
+    description: "Explore RoxanneJoiner kayaks and paddling accessories.",
+    images: ["/kayak-hero.png"],
   },
   icons: {
     icon: [
@@ -90,33 +90,17 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="preload" href="/logosvg.svg" as="image" type="image/svg+xml" />
-        {/* Facebook Domain Verification */}
-        <meta name="facebook-domain-verification" content="k3ytyf6hqaa462mz10uzwnmugj0d0o" />
-        <meta name="msvalidate.01" content="75494FC1101908256EEEA046C47C3264" />
-        {/* Google Merchant Center Domain Claim Verification */}
-        <meta name="google-site-verification" content="o8gC6haURQ1t7L9G8xfh_-5imCYNPmnhjnt2IrgEPco" />
-        <meta name="google-site-verification" content="whWwvqC20XmxK8qOhFgMP6wWGrqw2QYp-W-OSxNmlW8" />
-        <meta name="google-site-verification" content="xZPm3vNPMEKLJxsoCDxFrS9Sa17QOZfn8t_Xol3Tyfk" />
-        {/* Pinterest Domain Verification */}
-        <meta name="p:domain_verify" content="1005fd41bbe483406bb3d79510b3e9ed" />
-        {/* Meta Pixel base snippet */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','869199797850063');fbq('track','PageView');`,
-          }}
-        />
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=869199797850063&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
+
+
+
+
+
+
+
+
+
       </head>
-      <body suppressHydrationWarning className={`${dmSans.variable} font-sans antialiased text-[#233F31] bg-[#FAF6EB]`}>
+      <body suppressHydrationWarning className={`${dmSans.variable} font-sans antialiased text-[#123E52] bg-[#F7F3E8]`}>
         <GlobalErrorReporter />
         <Suspense fallback={null}>
           <FacebookPixel />
@@ -136,27 +120,8 @@ export default function RootLayout({
                 "name": "RoxanneJoiner",
                 "url": "https://roxannejoiner.com",
                 "logo": "https://roxannejoiner.com/logosvg.svg",
-                "description": "RoxanneJoiner - Premium Electric & Luxury Golf Carts. Discover reliable electric, 4-seater, 6-seater, and custom golf carts.",
-                "sameAs": [
-                  "https://www.tiktok.com/@roxannejoiner_officiel",
-                  "https://www.instagram.com/roxannejoinerofficial/",
-                  "https://www.pinterest.com/RoxanneJoiner_official/_pins/"
-                ],
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "contactType": "customer service",
-                  "email": "contact@roxannejoiner.com",
-                  "telephone": "+19129231747",
-                  "areaServed": ["US"]
-                },
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "1731 Matthews Ave APT 4A",
-                  "addressLocality": "Bronx",
-                  "addressRegion": "NY",
-                  "postalCode": "10462",
-                  "addressCountry": "US"
-                }
+                "description": "RoxanneJoiner - Kayaks & Paddling Gear. Discover kayaks and paddling essentials.",
+
               })
             }}
           />
@@ -173,7 +138,7 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "name": "RoxanneJoiner",
                 "url": "https://roxannejoiner.com",
-                "description": "RoxanneJoiner - Premium Electric & Luxury Golf Carts.",
+                "description": "RoxanneJoiner - Kayaks & Paddling Gear.",
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {
@@ -209,7 +174,7 @@ export default function RootLayout({
 
           {/* Checkout page - navbar only, no distractions */}
           <CheckoutRouteOnly>
-            <div className="min-h-screen flex flex-col bg-[#FAF6EB]">
+            <div className="min-h-screen flex flex-col bg-[#F7F3E8]">
               <Suspense fallback={null}>
                 <ClientHeader />
               </Suspense>

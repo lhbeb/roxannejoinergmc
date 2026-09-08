@@ -1,3 +1,4 @@
+import BrandContactDetails from '@/components/BrandContactDetails';
 import React from 'react';
 
 const PrivacyPolicyPage = () => (
@@ -136,25 +137,7 @@ const PrivacyPolicyPage = () => (
           <p className="mb-4">
             If you have questions about this Privacy Policy or need help with your privacy rights, please contact us:
           </p>
-          <div className="bg-gray-50 rounded-lg p-6 space-y-3">
-            <div>
-              <div className="font-medium text-[#262626] mb-1">Phone:</div>
-              <div className="text-gray-600">+19129231747</div>
-            </div>
-            <div>
-              <div className="font-medium text-[#262626] mb-1">Email:</div>
-              <div className="text-gray-600">contact@roxannejoiner.com</div>
-            </div>
-            <div>
-              <div className="font-medium text-[#262626] mb-1">Business Address:</div>
-              <div className="text-gray-600">1731 Matthews Ave APT 4A, Bronx, New York 10462, United States</div>
-            </div>
-            <div>
-              <div className="font-medium text-[#262626] mb-1">Hours:</div>
-              <div className="text-gray-600">Monday to Friday: 9:00 AM to 5:00 PM EST</div>
-              <div className="text-gray-600">Saturday: 10:00 AM to 3:00 PM EST</div>
-            </div>
-          </div>
+          <BrandContactDetails />
         </div>
       </div>
     </div>

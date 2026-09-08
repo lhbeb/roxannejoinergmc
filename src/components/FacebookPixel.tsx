@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { trackPixelEvent } from "@/lib/pixel";
 
-export const FB_PIXEL_ID = "869199797850063";
+export const FB_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '';
 
 // The Meta Pixel base snippet + init are injected synchronously in the root
 // <head> (see src/app/layout.tsx), so `fbq` is already defined and the initial

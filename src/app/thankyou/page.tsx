@@ -1,4 +1,5 @@
 'use client';
+import BrandContactDetails from '@/components/BrandContactDetails';
 
 import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
@@ -207,30 +208,19 @@ function ThankYouContent() {
           </div>
 
           {/* Contact Info */}
-          <div className="bg-[#FAF6EB] border border-[#789676]/30 rounded-xl p-6 mb-8">
-            <h3 className="font-semibold text-[#233F31] mb-2">Need Help?</h3>
+          <div className="bg-[#F7F3E8] border border-[#397F86]/30 rounded-xl p-6 mb-8">
+            <h3 className="font-semibold text-[#123E52] mb-2">Need Help?</h3>
             <p className="text-sm text-gray-600 mb-3">
-              If you have any questions about your golf cart order, don&apos;t hesitate to reach out:
+              If you have any questions about your kayak order, don&apos;t hesitate to reach out:
             </p>
-            <div className="space-y-1 text-sm">
-              <p className="text-gray-700">
-                📧 <a href="mailto:contact@roxannejoiner.com" className="text-[#233F31] hover:text-[#789676] font-medium">
-                  contact@roxannejoiner.com
-                </a>
-              </p>
-              <p className="text-gray-700">
-                📞 <a href="tel:+19129231747" className="text-[#233F31] hover:text-[#789676] font-medium">
-                  +19129231747
-                </a>
-              </p>
-            </div>
+            <BrandContactDetails />
           </div>
 
           {/* Action Buttons */}
           <div className="flex justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-3 bg-[#233F31] hover:bg-[#1a3025] text-[#FAF6EB] font-bold rounded-full transition-colors duration-200 shadow-sm"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#123E52] hover:bg-[#0C2C3D] text-[#F7F3E8] font-bold rounded-full transition-colors duration-200 shadow-sm"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Continue Shopping

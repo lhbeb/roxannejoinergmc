@@ -1,5 +1,6 @@
 "use client";
 
+import BrandContactDetails from '@/components/BrandContactDetails';
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Building2 } from 'lucide-react';
 
@@ -16,45 +17,9 @@ export default function ContactPage() {
   const [error, setError] = useState('');
 
   const schemaMarkup = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'ContactPage',
-        '@id': 'https://roxannejoiner.com/contact#webpage',
-        'url': 'https://roxannejoiner.com/contact',
-        'name': 'Contact Us | RoxanneJoiner Golf Carts',
-        'description':
-          'Contact the RoxanneJoiner customer support team. Reach our golf cart specialists by phone, email, or send us a direct message.',
-        'mainEntity': {
-          '@id': 'https://roxannejoiner.com/#organization',
-        },
-      },
-      {
-        '@type': 'Organization',
-        '@id': 'https://roxannejoiner.com/#organization',
-        'name': 'RoxanneJoiner',
-        'url': 'https://roxannejoiner.com',
-        'email': 'contact@roxannejoiner.com',
-        'telephone': ['+19129231747'],
-        'contactPoint': [
-          {
-            '@type': 'ContactPoint',
-            'telephone': '+19129231747',
-            'contactType': 'customer service',
-            'areaServed': ['US'],
-            'availableLanguage': ['en'],
-          },
-        ],
-        'address': {
-          '@type': 'PostalAddress',
-          'streetAddress': '1731 Matthews Ave APT 4A',
-          'addressLocality': 'Bronx',
-          'addressRegion': 'NY',
-          'postalCode': '10462',
-          'addressCountry': 'US',
-        },
-      },
-    ],
+    '@context': 'https://schema.org', '@type': 'ContactPage',
+    name: 'Contact RoxanneJoiner', url: 'https://roxannejoiner.com/contact',
+    description: 'Contact RoxanneJoiner for kayak questions and order support.',
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -90,7 +55,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EB]/40 py-12">
+    <div className="min-h-screen flex flex-col bg-[#F7F3E8]/40 py-12">
       {/* Schema.org ContactPage & Organization Structured Data */}
       <script
         type="application/ld+json"
@@ -99,11 +64,11 @@ export default function ContactPage() {
 
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-sm border border-[#233F31]/10 overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#123E52]/10 overflow-hidden">
             <div className="p-6 sm:p-8">
-              <h1 className="text-3xl font-bold text-[#233F31] mb-2 font-heading">Contact RoxanneJoiner</h1>
+              <h1 className="text-3xl font-bold text-[#123E52] mb-2 font-heading">Contact RoxanneJoiner</h1>
               <p className="text-gray-600 mb-8 text-sm sm:text-base">
-                Have questions about our electric golf carts, custom builds, delivery, or warranty? Send us a message and our team will get back to you promptly.
+                Have questions about kayaks, paddling accessories, delivery, or your order? Send us a message and our team will get back to you promptly.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Contact Form */}
@@ -120,7 +85,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#233F31] focus:border-transparent text-sm"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#123E52] focus:border-transparent text-sm"
                         disabled={isSending}
                       />
                     </div>
@@ -135,7 +100,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#233F31] focus:border-transparent text-sm"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#123E52] focus:border-transparent text-sm"
                         disabled={isSending}
                       />
                     </div>
@@ -149,16 +114,16 @@ export default function ContactPage() {
                         value={formData.contactReason}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#233F31] focus:border-transparent bg-white text-sm"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#123E52] focus:border-transparent bg-white text-sm"
                         disabled={isSending}
                       >
                         <option value="">Select a reason</option>
-                        <option value="custom-build">Custom Golf Cart Build</option>
+                        <option value="kayak-selection">Kayak Selection</option>
                         <option value="order-inquiry">Order & Delivery Status</option>
                         <option value="track-order">Track My Order</option>
                         <option value="warranty-service">Warranty & Parts Support</option>
                         <option value="return-refund">Return or Exchange</option>
-                        <option value="dealership">Commercial & Fleet Inquiry</option>
+                        <option value="partnership">Business Inquiry</option>
                         <option value="general">General Question</option>
                       </select>
                     </div>
@@ -173,7 +138,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#233F31] focus:border-transparent text-sm"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#123E52] focus:border-transparent text-sm"
                         disabled={isSending}
                       />
                     </div>
@@ -188,13 +153,13 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#233F31] focus:border-transparent text-sm resize-none"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#123E52] focus:border-transparent text-sm resize-none"
                         disabled={isSending}
                       />
                     </div>
                     <button
                       type="submit"
-                      className={`w-full bg-[#233F31] hover:bg-[#1a3025] text-[#FAF6EB] font-bold py-3 rounded-full transition-colors duration-200 shadow-sm ${isSending ? 'opacity-60 cursor-not-allowed' : ''}`}
+                      className={`w-full bg-[#123E52] hover:bg-[#0C2C3D] text-[#F7F3E8] font-bold py-3 rounded-full transition-colors duration-200 shadow-sm ${isSending ? 'opacity-60 cursor-not-allowed' : ''}`}
                       disabled={isSending}
                     >
                       {isSending ? 'Sending...' : 'Send Message'}
@@ -206,38 +171,9 @@ export default function ContactPage() {
                 </div>
 
                 {/* Contact Information */}
-                <div className="bg-[#FAF6EB]/50 p-6 rounded-xl border border-[#233F31]/10">
-                  <h2 className="text-xl font-bold text-[#233F31] mb-6 font-heading">Get in Touch</h2>
-                  <div className="space-y-6 text-sm">
-                    <div className="flex items-start">
-                      <MapPin className="h-5 w-5 text-[#789676] mt-1 shrink-0" />
-                      <div className="ml-3">
-                        <h3 className="font-semibold text-[#233F31]">Business Address</h3>
-                        <p className="text-gray-600 mt-0.5">1731 Matthews Ave APT 4A, Bronx, New York 10462, United States</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <Phone className="h-5 w-5 text-[#789676] mt-1 shrink-0" />
-                      <div className="ml-3">
-                        <h3 className="font-semibold text-[#233F31]">Phone Support</h3>
-                        <p className="text-gray-600 mt-0.5"><span className="font-medium text-[#233F31]">Direct:</span> +19129231747</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <Mail className="h-5 w-5 text-[#789676] mt-1 shrink-0" />
-                      <div className="ml-3">
-                        <h3 className="font-semibold text-[#233F31]">Email Support</h3>
-                        <p className="text-gray-600 mt-0.5">contact@roxannejoiner.com</p>
-                      </div>
-                    </div>
-                    <div className="border-t border-[#233F31]/10 pt-5">
-                      <h3 className="font-semibold text-[#233F31] mb-1.5">Support Hours</h3>
-                      <ul className="text-gray-600 space-y-1 text-xs sm:text-sm">
-                        <li>Monday - Friday: 9:00 AM - 5:00 PM EST</li>
-                        <li>Saturday - Sunday: Closed</li>
-                      </ul>
-                    </div>
-                  </div>
+                <div className="bg-[#F7F3E8]/50 p-6 rounded-xl border border-[#123E52]/10">
+                  <h2 className="text-xl font-bold text-[#123E52] mb-6 font-heading">Get in Touch</h2>
+                  <BrandContactDetails />
                 </div>
               </div>
             </div>
