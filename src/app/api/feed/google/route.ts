@@ -5,7 +5,7 @@ import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 import { storePolicy } from '@/config/storePolicy';
 import type { Product } from '@/types/product';
 
-const BASE_URL = 'https://roxannejoiner.com';
+const BASE_URL = 'https://roxannejoiner.shop';
 const SUPPORTED_COUNTRIES = ['US'] as const;
 const SUPPORTED_CURRENCIES = ['USD'] as const;
 

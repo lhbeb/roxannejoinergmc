@@ -8,7 +8,7 @@ import ProductPageClient from './ProductPageClient';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 // Hardcoded base URL (no environment variable needed)
-const BASE_URL = 'https://roxannejoiner.com';
+const BASE_URL = 'https://roxannejoiner.shop';
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },

@@ -3,7 +3,7 @@ import { getAllProducts } from '@/lib/data';
 import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://roxannejoiner.com';
+  const baseUrl = 'https://roxannejoiner.shop';
   const now = new Date();
 
   let products: Awaited<ReturnType<typeof getAllProducts>> = [];

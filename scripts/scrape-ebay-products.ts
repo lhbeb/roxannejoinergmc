@@ -259,9 +259,9 @@ async function scrapeAndPush() {
       condition: 'New',
       category: category || 'Golf Accessories',
       brand: brand || 'RoxanneJoiner',
-      payee_email: 'contact@roxannejoiner.com',
+      payee_email: 'contact@roxannejoiner.shop',
       currency: 'USD',
-      checkout_link: `https://roxannejoiner.com/checkout`,
+      checkout_link: `https://roxannejoiner.shop/checkout`,
       checkout_flow: 'stripe',
       reviews: reviews,
       meta: {

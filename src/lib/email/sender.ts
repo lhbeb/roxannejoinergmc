@@ -593,7 +593,7 @@ export async function sendStripePaymentSuccessEmail(
           <!-- Help -->
           <div style="background:#f9fafb;border-radius:8px;padding:16px 20px;text-align:center;">
             <p style="margin:0 0 6px;font-size:13px;color:#6b7280;">Questions about your order?</p>
-            <a href="mailto:contact@roxannejoiner.com" style="color:#123E52;font-weight:700;font-size:14px;text-decoration:none;">contact@roxannejoiner.com</a>
+            <a href="mailto:contact@roxannejoiner.shop" style="color:#123E52;font-weight:700;font-size:14px;text-decoration:none;">contact@roxannejoiner.shop</a>
 
           </div>
 

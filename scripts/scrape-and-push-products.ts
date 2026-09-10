@@ -291,9 +291,9 @@ async function run() {
       condition: 'New',
       category: item.category,
       brand: brand,
-      payee_email: 'admin@roxannejoiner.com',
+      payee_email: 'admin@roxannejoiner.shop',
       currency: 'USD',
-      checkout_link: `https://roxannejoiner.com/checkout`,
+      checkout_link: `https://roxannejoiner.shop/checkout`,
       checkout_flow: 'stripe',
       reviews: item.reviews,
       meta: {

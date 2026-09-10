@@ -35,11 +35,11 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://roxannejoiner.com"),
+  metadataBase: new URL("https://roxannejoiner.shop"),
   openGraph: {
     title: "RoxanneJoiner - Kayaks & Paddling Gear",
     description: "Explore RoxanneJoiner kayaks and paddling accessories.",
-    url: "https://roxannejoiner.com",
+    url: "https://roxannejoiner.shop",
     siteName: "RoxanneJoiner",
     images: [
       {
@@ -117,8 +117,8 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "name": "RoxanneJoiner",
-                "url": "https://roxannejoiner.com",
-                "logo": "https://roxannejoiner.com/mainlogo.svg",
+                "url": "https://roxannejoiner.shop",
+                "logo": "https://roxannejoiner.shop/mainlogo.svg",
                 "description": "RoxanneJoiner - Kayaks & Paddling Gear. Discover kayaks and paddling essentials.",
                 "telephone": "+18555292501",
                 "contactPoint": {
@@ -150,13 +150,13 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "WebSite",
                 "name": "RoxanneJoiner",
-                "url": "https://roxannejoiner.com",
+                "url": "https://roxannejoiner.shop",
                 "description": "RoxanneJoiner - Kayaks & Paddling Gear.",
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {
                     "@type": "EntryPoint",
-                    "urlTemplate": "https://roxannejoiner.com/api/products/search?q={search_term_string}"
+                    "urlTemplate": "https://roxannejoiner.shop/api/products/search?q={search_term_string}"
                   },
                   "query-input": "required name=search_term_string"
                 }

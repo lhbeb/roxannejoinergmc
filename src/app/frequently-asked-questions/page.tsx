@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Find answers about RoxanneJoiner kayaks, paddling accessories, delivery, returns, and support.',
   alternates: {
-    canonical: 'https://roxannejoiner.com/frequently-asked-questions',
+    canonical: 'https://roxannejoiner.shop/frequently-asked-questions',
   },
 };
 

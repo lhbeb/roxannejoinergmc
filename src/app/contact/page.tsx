@@ -18,7 +18,7 @@ export default function ContactPage() {
 
   const schemaMarkup = {
     '@context': 'https://schema.org', '@type': 'ContactPage',
-    name: 'Contact RoxanneJoiner', url: 'https://roxannejoiner.com/contact',
+    name: 'Contact RoxanneJoiner', url: 'https://roxannejoiner.shop/contact',
     description: 'Contact RoxanneJoiner for kayak questions and order support.',
   };
 

@@ -401,7 +401,7 @@ export default function AdminSidebar() {
 
               {/* GoLinks */}
               <a
-                href="https://go.roxannejoiner.com/"
+                href="https://go.roxannejoiner.shop/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}

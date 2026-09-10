@@ -625,7 +625,7 @@ export default function AdminProductsPage() {
         return;
       }
 
-      const domain = 'https://roxannejoiner.com';
+      const domain = 'https://roxannejoiner.shop';
 
       // 1:1 Match with Google Merchant Center official CSV template headers
       const columns = [

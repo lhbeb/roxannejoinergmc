@@ -1,4 +1,4 @@
-const DEFAULT_BASE_URL = 'https://roxannejoiner.com';
+const DEFAULT_BASE_URL = 'https://roxannejoiner.shop';
 
 const ENV_BASE_URL_CANDIDATES: Array<string | null | undefined> = [
   process.env.APP_BASE_URL,

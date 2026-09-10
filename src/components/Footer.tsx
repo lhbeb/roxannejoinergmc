@@ -80,7 +80,7 @@ const Footer = () => {
                 className="h-16 w-auto max-w-full object-contain brightness-110 contrast-110"
               />
             </div>
-            <p className="text-center text-xs sm:text-sm text-[#F7F3E8]/70">© {new Date().getFullYear()} RoxanneJoiner. All rights reserved. roxannejoiner.com</p>
+            <p className="text-center text-xs sm:text-sm text-[#F7F3E8]/70">© {new Date().getFullYear()} RoxanneJoiner. All rights reserved. roxannejoiner.shop</p>
           </div>
         </div>
       </div>
