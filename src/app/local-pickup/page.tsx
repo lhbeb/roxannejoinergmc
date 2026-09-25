@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import BrandContactDetails from '@/components/BrandContactDetails';
 export const metadata: Metadata = { title: 'Local Pickup | RoxanneJoiner Kayaks' };
 export default function LocalPickupPage() {
-  return <main className="min-h-screen bg-[#F7F3E8] px-6 py-16"><section className="mx-auto max-w-3xl rounded-2xl bg-[#123E52] p-10 text-[#F7F3E8]"><p className="mb-4 text-sm uppercase tracking-widest">RoxanneJoiner Kayaks</p><h1 className="mb-6 text-4xl font-bold">Local Pickup</h1><p className="mb-6 leading-8">Contact our team to confirm whether collection is available for your kayak or accessories. Please wait for a confirmed collection location and appointment before making travel arrangements.</p><Link className="font-semibold underline" href="/contact">Ask about collection →</Link></section></main>;
+  return <main className="min-h-screen bg-[#F7F3E8] px-6 py-16"><section className="mx-auto max-w-3xl rounded-2xl bg-[#123E52] p-10 text-[#F7F3E8]"><p className="mb-4 text-sm uppercase tracking-widest">RoxanneJoiner Kayaks</p><h1 className="mb-6 text-4xl font-bold">Local Pickup</h1><p className="mb-6 leading-8">Contact our team to confirm whether collection is available for your kayak or accessories. Please wait for a confirmed collection location and appointment before making travel arrangements.</p><Link className="font-semibold underline" href="/contact">Ask about collection →</Link><div className="mt-8 rounded-2xl bg-[#F7F3E8] p-6 text-[#123E52]"><h2 className="mb-3 text-2xl font-bold">Contact</h2><BrandContactDetails /></div></section></main>;
 }

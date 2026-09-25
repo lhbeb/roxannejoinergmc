@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Clock, MapPin, PackageCheck, Truck } from 'lucide-react';
 import { storePolicy } from '@/config/storePolicy';
+import BrandContactDetails from '@/components/BrandContactDetails';
 
 export const metadata: Metadata = {
   title: 'Shipping Policy | RoxanneJoiner',
@@ -46,6 +47,7 @@ export default function ShippingPolicyPage() {
           <div><h2 className="text-2xl font-bold text-[#123E52]">Delivery estimates</h2><p className="mt-3 leading-7">Processing time is {storePolicy.handlingDays.min}-{storePolicy.handlingDays.max} business days and transit time is {storePolicy.transitDays.min}-{storePolicy.transitDays.max} business days. The typical combined estimate is {totalMin}-{totalMax} business days from payment confirmation. Weekends, public holidays, severe weather, carrier disruptions, and address corrections may extend delivery. An estimate is not a guaranteed arrival date.</p></div>
           <div><h2 className="text-2xl font-bold text-[#123E52]">Tracking and order support</h2><p className="mt-3 leading-7">When tracking is available, it is sent after dispatch. Tracking events and delivery scans are supplied by the carrier. For an address correction or a delivery question, <Link href="/contact" className="font-semibold text-[#123E52] underline">contact RoxanneJoiner</Link> as soon as possible.</p></div>
           <p className="border-t border-gray-200 pt-6 text-sm text-gray-500">Last updated: September 8, 2026</p>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Contact</h2><div className="mt-3 rounded-2xl bg-[#F7F3E8] p-6"><BrandContactDetails /></div></div>
         </section>
       </div>
     </main>

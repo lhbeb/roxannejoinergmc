@@ -32,8 +32,8 @@ export default function ReturnPolicyPage() {
           <div><h2 className="text-2xl font-bold text-[#123E52]">Restocking fee</h2><p className="mt-3 leading-7">There is no restocking fee. The restocking fee is free: $0.</p></div>
           <div><h2 className="flex items-center gap-3 text-2xl font-bold text-[#123E52]"><PackageCheck className="h-6 w-6" />How to start a return</h2><ol className="mt-3 list-decimal space-y-2 pl-6 leading-7"><li><Link href="/contact" className="font-semibold text-[#123E52] underline">Contact customer support</Link> within the {storePolicy.returnWindowDays}-day return window.</li><li>Include your order number and whether the item is defective or non-defective.</li><li>Use the return label included in the package and return the item by mail.</li></ol></div>
           <div><h2 className="text-2xl font-bold text-[#123E52]">Refunds and exchanges</h2><p className="mt-3 leading-7">We accept exchanges. We inspect returned items after receipt. Approved refunds are submitted to the original payment method within {storePolicy.refundProcessingDays} business days; your bank or payment provider may need additional time to post the credit.</p></div>
-          <div className="rounded-2xl bg-[#F7F3E8] p-6"><BrandContactDetails /></div>
           <p className="border-t border-gray-200 pt-6 text-sm text-gray-500">Last updated: September 8, 2026</p>
+          <div><h2 className="text-2xl font-bold text-[#123E52]">Contact</h2><div className="mt-3 rounded-2xl bg-[#F7F3E8] p-6"><BrandContactDetails /></div></div>
         </section>
       </div>
     </main>
