@@ -11,8 +11,6 @@ import SearchBar from './SearchBar';
 
 const catalogNavigation = [
   { label: 'Kayaks', href: '/search?collection=kayaks' },
-  { label: 'Paddles', href: '/search?collection=paddles' },
-  { label: 'Accessories', href: '/search?collection=kayak-accessories' },
   { label: 'Featured', href: '/#featured' },
   { label: 'Track Order', href: '/track' },
   { label: 'FAQs', href: '/frequently-asked-questions' },
