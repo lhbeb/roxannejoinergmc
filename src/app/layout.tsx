@@ -14,6 +14,7 @@ import OptionalAnalytics from "@/components/OptionalAnalytics";
 import { AdminRouteCheck, PublicRouteOnly, AdminRouteOnly, CheckoutRouteOnly } from "@/components/AdminRouteCheck";
 import GlobalErrorReporter from "@/components/GlobalErrorReporter";
 import LiveChatWidget from "@/components/LiveChatWidget";
+import { brand } from "@/config/brand";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -120,10 +121,12 @@ export default function RootLayout({
                 "url": "https://roxannejoiner.shop",
                 "logo": "https://roxannejoiner.shop/mainlogo.svg",
                 "description": "RoxanneJoiner - Kayaks & Paddling Gear. Discover kayaks and paddling essentials.",
+                "email": brand.email,
                 "telephone": "+18555292501",
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "telephone": "+18555292501",
+                  "email": brand.email,
                   "contactType": "customer service",
                   "areaServed": "US"
                 },

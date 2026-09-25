@@ -3,6 +3,7 @@
 import BrandContactDetails from '@/components/BrandContactDetails';
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Building2 } from 'lucide-react';
+import { brand } from '@/config/brand';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ export default function ContactPage() {
     '@context': 'https://schema.org', '@type': 'ContactPage',
     name: 'Contact RoxanneJoiner', url: 'https://roxannejoiner.shop/contact',
     description: 'Contact RoxanneJoiner for kayak questions and order support.',
+    email: brand.email,
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
