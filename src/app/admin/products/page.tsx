@@ -12,6 +12,7 @@ import {
 import AdminLayout from '@/components/AdminLayout';
 import AdminLoading from '@/components/AdminLoading';
 import { FEATURED_PRODUCT_LIMIT } from '@/config/products';
+import { formatValidSku } from '@/lib/conditions';
 
 interface Product {
   id: string;
@@ -673,7 +674,7 @@ export default function AdminProductsPage() {
       const columns = [
         'id', 'title', 'description', 'availability', 'availability_date', 'expiration_date',
         'link', 'mobile_link', 'image_link', 'price', 'sale_price', 'sale_price_effective_date',
-        'identifier_exists', 'gtin', 'mpn', 'brand', 'product_highlight', 'product_detail',
+        'identifier_exists', 'gtin', 'mpn', 'brand', 'google_product_category', 'product_highlight', 'product_detail',
         'additional_image_link', 'condition', 'adult', 'color', 'size', 'size_type',
         'size_system', 'gender', 'material', 'pattern', 'age_group', 'multipack',
         'is bundle', 'unit_pricing_measure', 'unit_pricing_base_measure',
@@ -717,9 +718,12 @@ export default function AdminProductsPage() {
         const condition = (p.condition || 'new').toLowerCase().includes('refurbished') ? 'refurbished'
           : (p.condition || 'new').toLowerCase().includes('used') ? 'used' : 'new';
         const brand = p.brand || 'RoxanneJoiner';
+        const itemId = formatValidSku(p);
+        const gtin = p.gtin || p.gtin12 || p.gtin13 || p.gtin14 || p.upc || p.ean || p.isbn || p.meta?.gtin || p.meta?.upc || '';
+        const mpn = p.mpn || p.manufacturerPartNumber || p.manufacturer_part_number || p.model || p.meta?.mpn || itemId;
 
         return [
-          escapeCSV(pSlug),                                // id
+          escapeCSV(itemId),                               // id
           escapeCSV(p.title || ''),                       // title
           escapeCSV(p.description || p.title || ''),       // description
           escapeCSV(isAvailable),                          // availability (in_stock / out_of_stock)
@@ -731,10 +735,11 @@ export default function AdminProductsPage() {
           escapeCSV(finalPriceStr),                       // price
           escapeCSV(salePriceStr),                        // sale_price
           '',                                             // sale_price_effective_date
-          escapeCSV('no'),                                // identifier_exists
-          '',                                             // gtin
-          '',                                             // mpn
+          escapeCSV('yes'),                               // identifier_exists
+          escapeCSV(gtin),                                // gtin
+          escapeCSV(mpn),                                 // mpn
           escapeCSV(brand),                               // brand
+          '1127',                                         // google_product_category
           '',                                             // product_highlight
           '',                                             // product_detail
           escapeCSV(additionalImages),                    // additional_image_link

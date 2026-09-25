@@ -14,7 +14,7 @@ import OptionalAnalytics from "@/components/OptionalAnalytics";
 import { AdminRouteCheck, PublicRouteOnly, AdminRouteOnly, CheckoutRouteOnly } from "@/components/AdminRouteCheck";
 import GlobalErrorReporter from "@/components/GlobalErrorReporter";
 import LiveChatWidget from "@/components/LiveChatWidget";
-import { brand } from "@/config/brand";
+import { brandOrganizationSchema } from "@/config/brand";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -116,28 +116,7 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "RoxanneJoiner",
-                "url": "https://roxannejoiner.shop",
-                "logo": "https://roxannejoiner.shop/mainlogo.svg",
-                "description": "RoxanneJoiner - Kayaks & Paddling Gear. Discover kayaks and paddling essentials.",
-                "email": brand.email,
-                "telephone": "+18555292501",
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "telephone": "+18555292501",
-                  "email": brand.email,
-                  "contactType": "customer service",
-                  "areaServed": "US"
-                },
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "141 Elm St #01",
-                  "addressLocality": "Marlborough",
-                  "addressRegion": "MA",
-                  "postalCode": "01752",
-                  "addressCountry": "US"
-                }
+                ...brandOrganizationSchema
               })
             }}
           />
@@ -155,6 +134,7 @@ export default function RootLayout({
                 "name": "RoxanneJoiner",
                 "url": "https://roxannejoiner.shop",
                 "description": "RoxanneJoiner - Kayaks & Paddling Gear.",
+                "publisher": brandOrganizationSchema,
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {

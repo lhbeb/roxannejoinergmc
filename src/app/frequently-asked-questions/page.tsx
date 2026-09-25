@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, HelpCircle, Plus } from 'lucide-react';
 import { STORE_FAQS } from '@/lib/storeFaqs';
+import { brandOrganizationSchema } from '@/config/brand';
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions | RoxanneJoiner Kayaks',
@@ -16,6 +17,7 @@ export default function FrequentlyAskedQuestionsPage() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    publisher: brandOrganizationSchema,
     mainEntity: STORE_FAQS.map((faq) => ({
       '@type': 'Question',
       name: faq.question,

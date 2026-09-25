@@ -151,14 +151,26 @@ export function mapConditionToSchema(conditionValue: string | undefined): string
  * Google Merchant Center strictly caps the `id` attribute at 50 characters maximum.
  */
 export function formatValidSku(product: { sku?: string; slug?: string; id?: string | number }, fallbackSlug?: string): string {
+  const withRoxannePrefix = (value: unknown): string => {
+    const cleaned = String(value || '')
+      .trim()
+      .replace(/[^a-zA-Z0-9_-]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .toUpperCase()
+      .replace(/^ROXANNE-?/, '');
+    const body = cleaned || `ITEM-${String(product.id || '101').replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+    return `ROXANNE-${body}`.slice(0, 50).replace(/-+$/g, '');
+  };
+
   // Explicit SKU if provided and <= 50 characters
-  if (product.sku && String(product.sku).trim().length >= 3 && String(product.sku).trim().length <= 50) {
-    return String(product.sku).trim().toUpperCase().replace(/[^a-zA-Z0-9_-]/g, '-');
+  if (product.sku && String(product.sku).trim().length >= 3) {
+    return withRoxannePrefix(product.sku);
   }
 
   // Short ID if available (e.g. 101, PROD-12)
   if (product.id && String(product.id).trim().length >= 1 && String(product.id).trim().length <= 40) {
-    const cleanId = String(product.id).trim().replace(/[^a-zA-Z0-9_-]/g, '-').toUpperCase();
+    const cleanId = withRoxannePrefix(product.id);
     if (cleanId.length >= 3 && cleanId.length <= 50) {
       return cleanId;
     }
@@ -166,16 +178,13 @@ export function formatValidSku(product: { sku?: string; slug?: string; id?: stri
 
   // Fallback to slug, truncated to max 45 characters so it strictly fits Google's 50 char limit
   const candidate = String(product.slug || fallbackSlug || product.id || '').trim();
-  let cleaned = candidate.replace(/[^a-zA-Z0-9_-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').toUpperCase();
-  if (cleaned.length > 45) {
-    cleaned = cleaned.slice(0, 45).replace(/-+$/g, '');
-  }
+  const cleaned = withRoxannePrefix(candidate);
 
   if (cleaned.length >= 3) {
     return cleaned;
   }
 
-  return `RJ-${cleaned || 'ITEM'}-${String(product.id || '101')}`.slice(0, 50);
+  return withRoxannePrefix(`ITEM-${String(product.id || '101')}`);
 }
 
 

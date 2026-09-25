@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Clock, MapPin, PackageCheck, Truck } from 'lucide-react';
 import { storePolicy } from '@/config/storePolicy';
 import BrandContactDetails from '@/components/BrandContactDetails';
+import { brandOrganizationSchema } from '@/config/brand';
 
 export const metadata: Metadata = {
   title: 'Shipping Policy | RoxanneJoiner',
@@ -15,15 +16,21 @@ const totalMax = storePolicy.handlingDays.max + storePolicy.transitDays.max;
 export default function ShippingPolicyPage() {
   const schemaMarkup = {
     '@context': 'https://schema.org',
-    '@type': 'OfferShippingDetails',
-    name: storePolicy.shippingService,
-    shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
-    shippingRate: { '@type': 'MonetaryAmount', value: storePolicy.shippingPrice, currency: storePolicy.currency },
-    deliveryTime: {
-      '@type': 'ShippingDeliveryTime',
-      handlingTime: { '@type': 'QuantitativeValue', minValue: storePolicy.handlingDays.min, maxValue: storePolicy.handlingDays.max, unitCode: 'DAY' },
-      transitTime: { '@type': 'QuantitativeValue', minValue: storePolicy.transitDays.min, maxValue: storePolicy.transitDays.max, unitCode: 'DAY' },
-    },
+    '@graph': [
+      brandOrganizationSchema,
+      {
+        '@type': 'OfferShippingDetails',
+        name: storePolicy.shippingService,
+        provider: brandOrganizationSchema,
+        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
+        shippingRate: { '@type': 'MonetaryAmount', value: storePolicy.shippingPrice, currency: storePolicy.currency },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          handlingTime: { '@type': 'QuantitativeValue', minValue: storePolicy.handlingDays.min, maxValue: storePolicy.handlingDays.max, unitCode: 'DAY' },
+          transitTime: { '@type': 'QuantitativeValue', minValue: storePolicy.transitDays.min, maxValue: storePolicy.transitDays.max, unitCode: 'DAY' },
+        },
+      },
+    ],
   };
 
   return (

@@ -19,6 +19,12 @@ const SHIPPING_BY_COUNTRY: Record<FeedCountry, {
   US: { service: 'Free Standard Shipping', currency: 'USD' },
 };
 
+const GOOGLE_PRODUCT_CATEGORY_BY_TYPE = {
+  kayaks: '1127',
+  paddles: '1129',
+  accessories: '6312',
+} as const;
+
 function escapeXml(value: unknown): string {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -71,6 +77,39 @@ function buildShippingXml(
     .join('');
 }
 
+function readProductIdentifier(product: Product, keys: string[]): string {
+  const productRecord = product as Product & Record<string, any>;
+  for (const key of keys) {
+    const directValue = productRecord[key];
+    const metaValue = product.meta?.[key as keyof NonNullable<Product['meta']>];
+    const value = directValue ?? metaValue;
+    if (value !== undefined && value !== null && String(value).trim()) {
+      return String(value).trim();
+    }
+  }
+  return '';
+}
+
+function getGoogleProductCategory(product: Product): string {
+  const values = [
+    product.category,
+    product.title,
+    product.description,
+    ...(Array.isArray(product.collections) ? product.collections : []),
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  if (/accessor|gear|vest|storage|bag|rack/.test(values)) {
+    return GOOGLE_PRODUCT_CATEGORY_BY_TYPE.accessories;
+  }
+  if (/paddle|oar/.test(values)) {
+    return GOOGLE_PRODUCT_CATEGORY_BY_TYPE.paddles;
+  }
+  return GOOGLE_PRODUCT_CATEGORY_BY_TYPE.kayaks;
+}
+
 export async function GET(request: NextRequest) {
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
     return new NextResponse('Product database is not configured.', { status: 503 });
@@ -121,7 +160,10 @@ export async function GET(request: NextRequest) {
         const condition = mapConditionToGmc(product.condition);
         const brand = escapeXml(product.brand || 'RoxanneJoiner');
         const category = escapeXml(product.category || 'Home & Garden');
+        const googleProductCategory = escapeXml(getGoogleProductCategory(product));
         const imageLink = escapeXml(new URL(product.images[0], BASE_URL).toString());
+        const gtin = readProductIdentifier(product, ['gtin', 'gtin12', 'gtin13', 'gtin14', 'upc', 'ean', 'isbn']);
+        const mpn = readProductIdentifier(product, ['mpn', 'manufacturerPartNumber', 'manufacturer_part_number', 'model']) || sku;
 
         return `
     <item>
@@ -134,8 +176,11 @@ export async function GET(request: NextRequest) {
       <g:availability>${availability}</g:availability>
       <g:condition>${condition}</g:condition>
       <g:brand>${brand}</g:brand>
+      ${gtin ? `<g:gtin>${escapeXml(gtin)}</g:gtin>` : ''}
+      <g:mpn>${escapeXml(mpn)}</g:mpn>
+      <g:google_product_category>${googleProductCategory}</g:google_product_category>
       <g:product_type>${category}</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>${buildShippingXml(targetCountries, productCurrency)}
+      <g:identifier_exists>yes</g:identifier_exists>${buildShippingXml(targetCountries, productCurrency)}
     </item>`;
       })
       .join('');

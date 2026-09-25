@@ -3,6 +3,7 @@ import { getReviewProduct, isReviewProduct } from '@/lib/reviewProducts';
 import { formatValidSku, mapConditionToSchema } from '@/lib/conditions';
 import { isPublicStoreProduct } from '@/lib/kayakCatalog';
 import { storePolicy } from '@/config/storePolicy';
+import { brandOrganizationSchema } from '@/config/brand';
 import { notFound } from 'next/navigation';
 import ProductPageClient from './ProductPageClient';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -120,10 +121,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           : "https://schema.org/OutOfStock",
         "itemCondition": mapConditionToSchema(p.condition),
         "url": `${BASE_URL}/products/${p.slug}`,
-        "seller": {
-          "@type": "Organization",
-          "name": "RoxanneJoiner"
-        },
+        "seller": brandOrganizationSchema,
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "applicableCountry": ["US"],
@@ -196,6 +194,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     const breadcrumbSchema = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "provider": brandOrganizationSchema,
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
         { "@type": "ListItem", "position": 2, "name": "Products", "item": `${BASE_URL}/#products` },
