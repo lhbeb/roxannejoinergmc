@@ -181,7 +181,7 @@ function ThankYouContent() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-medium text-[#262626]">Order Processing</h3>
-                  <p className="text-sm text-gray-600">We normally process your order within 1–2 business days</p>
+                  <p className="text-sm text-gray-600">We normally process your order within 1-2 business days</p>
                 </div>
               </div>
 
@@ -201,7 +201,7 @@ function ThankYouContent() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-medium text-[#262626]">Shipping</h3>
-                  <p className="text-sm text-gray-600">Your order will arrive within 5-9 business days</p>
+                  <p className="text-sm text-gray-600">Standard U.S. transit is estimated at 5-9 business days after dispatch</p>
                 </div>
               </div>
             </div>

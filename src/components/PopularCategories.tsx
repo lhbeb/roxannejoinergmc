@@ -1,21 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/types/product';
-
-const POPULAR_CATEGORY_NAMES = ['Kayaks', 'Recreational Kayaks', 'Fishing Kayaks', 'Tandem Kayaks', 'Touring Kayaks', 'Inflatable Kayaks', 'Paddles', 'Kayak Accessories'] as const;
+import { PRODUCT_COLLECTION_OPTIONS, getCollectionsForCategory } from '@/lib/productCollections';
 
 interface PopularCategoriesProps {
   products: Product[];
 }
 
 export default function PopularCategories({ products }: PopularCategoriesProps) {
-  const categories = POPULAR_CATEGORY_NAMES.map((name) => {
+  const categories = PRODUCT_COLLECTION_OPTIONS.map((collection) => {
     const categoryProducts = products.filter(
-      (product) => product.category?.trim().toLowerCase() === name.toLowerCase(),
+      (product) =>
+        product.collections?.includes(collection.value) ||
+        getCollectionsForCategory(product.category || '').includes(collection.value),
     );
 
     return {
-      name,
+      name: collection.label,
+      href: `/search?collection=${encodeURIComponent(collection.value)}`,
       count: categoryProducts.length,
       image: categoryProducts.find((product) => product.images?.[0])?.images[0],
     };
@@ -40,7 +42,7 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
             {categories.map((category) => (
               <Link
                 key={category.name}
-                href={`/search?category=${encodeURIComponent(category.name)}`}
+                href={category.href}
                 className="relative overflow-hidden rounded-2xl border border-[#123E52]/15 bg-white shadow-sm transition-all duration-200 hover:border-[#397F86] hover:shadow-md group"
                 aria-label={`Shop ${category.name}`}
               >

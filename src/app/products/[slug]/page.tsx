@@ -130,20 +130,22 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
           "merchantReturnDays": storePolicy.returnWindowDays,
           "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+          "returnFees": "https://schema.org/FreeReturn",
           "restockingFee": 0,
           "refundType": "https://schema.org/FullRefund"
         },
         "shippingDetails": [
           {
             "@type": "OfferShippingDetails",
+            "name": storePolicy.shippingService,
             "shippingRate": {
               "@type": "MonetaryAmount",
-              "value": 0,
-              "currency": "USD"
+              "value": storePolicy.shippingPrice,
+              "currency": storePolicy.currency
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
+              "name": "United States",
               "addressCountry": "US"
             },
             "deliveryTime": {

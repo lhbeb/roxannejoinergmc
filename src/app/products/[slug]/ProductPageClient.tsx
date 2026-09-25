@@ -12,7 +12,7 @@ import { addToCart } from '@/utils/cart';
 import { preventScrollOnClick } from '@/utils/scrollUtils';
 import { debugNavigation, debugError, debugLog } from '@/utils/debug';
 import { trackPixelEvent } from '@/lib/pixel';
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, X, ShoppingCart, Zap, Eye, ZoomIn, Info, Ruler } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, X, ShoppingCart, Zap, ZoomIn, Info, Ruler } from 'lucide-react';
 import { useState, useEffect, useMemo, useRef, type CSSProperties } from 'react';
 import type { Product } from '@/types/product';
 import Image from 'next/image';
@@ -26,6 +26,10 @@ interface ProductPageClientProps {
 
 const PRODUCT_IMAGE_QUALITY = 95;
 const COLLAPSED_FAQ_COUNT = 2;
+const PRODUCT_FAQ_PRIORITY = new Set([
+  'Where can I find delivery information?',
+  'What is the return policy?',
+]);
 
 export default function ProductPageClient({ product: initialProduct }: ProductPageClientProps) {
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -39,7 +43,6 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
   const [showZoom, setShowZoom] = useState(false);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [isBuyingNow, setIsBuyingNow] = useState(false);
-  const [viewedCount, setViewedCount] = useState<number | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
   const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(null);
@@ -62,7 +65,11 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
     }
   }, [product]);
 
-  const faqItems = STORE_FAQS;
+  const faqItems = useMemo(() => {
+    const priorityItems = STORE_FAQS.filter((faq) => PRODUCT_FAQ_PRIORITY.has(faq.question));
+    const remainingItems = STORE_FAQS.filter((faq) => !PRODUCT_FAQ_PRIORITY.has(faq.question));
+    return [...priorityItems, ...remainingItems];
+  }, []);
 
   const parsedMensSizes = useMemo(() => {
     const raw = product?.meta?.sizes_mens || product?.meta?.sizes;
@@ -87,27 +94,6 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
     const preview = descriptionText.slice(0, 360).trimEnd();
     return `${preview}${preview.endsWith(".") ? "" : "…"}`;
   }, [descriptionText, shouldCollapseDescription]);
-
-  useEffect(() => {
-    if (!product || typeof window === 'undefined') return;
-
-    const sessionKey = `product_viewed_${product.slug}`;
-    const storedCount = sessionStorage.getItem(sessionKey);
-    if (storedCount) {
-      setViewedCount(parseInt(storedCount, 10));
-      return;
-    }
-
-    let hash = 0;
-    for (let i = 0; i < product.slug.length; i++) {
-      hash = ((hash << 5) - hash) + product.slug.charCodeAt(i);
-      hash &= hash;
-    }
-    const count = 27 + (Math.abs(hash) % 97);
-    sessionStorage.setItem(sessionKey, count.toString());
-    setViewedCount(count);
-  }, [product]);
-
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -616,24 +602,6 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                   </>
                 )}
               </div>
-
-              <ClientOnly>
-                {viewedCount !== null && viewedCount > 0 && (
-                  <div className="mt-6 bg-[#F7F3E8] border border-[#397F86]/30 rounded-xl p-3 sm:p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-[#123E52]">
-                        <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-1.5 text-[#397F86]" />
-                        <span className="text-xs sm:text-sm font-medium">{viewedCount.toLocaleString()} viewed in the last 24 hours</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 bg-[#397F86] rounded-full animate-pulse mr-2"></div>
-                        <span className="text-xs text-[#123E52] font-medium hidden sm:inline">Live activity</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </ClientOnly>
-
 
               {/* Size Selector Section */}
               {!!(product?.meta?.has_mens_sizes || product?.meta?.has_womens_sizes || product?.meta?.hasSizes) && (

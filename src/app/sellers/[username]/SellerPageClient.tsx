@@ -182,7 +182,7 @@ export default function SellerPageClient({ seller }: Props) {
                   <div className="h-px bg-gray-100 w-full" />
                   <div>
                     <h3 className="text-sm font-semibold text-[#262626] mb-1">Returns</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">Eligible items may be returned within 30 days of delivery. See the <Link href="/return-policy" className="font-semibold underline">Return Policy</Link> for conditions and costs.</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">Defective and non-defective products may be returned by mail within 30 days when returned new only. The return label is included in the package, exchanges are accepted, and there is no restocking fee. See the <Link href="/return-policy" className="font-semibold underline">Return Policy</Link> for details.</p>
                   </div>
                   <div className="h-px bg-gray-100 w-full" />
                   <div>

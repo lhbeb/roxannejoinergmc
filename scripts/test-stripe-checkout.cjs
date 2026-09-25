@@ -11,7 +11,7 @@ function loadRoute(file, mocks) {
   }).outputText;
   vm.runInNewContext(code, {
     exports, require: name => { if (!(name in mocks)) throw new Error('Unexpected dependency: ' + name); return mocks[name]; },
-    process: { env: { NEXT_PUBLIC_BASE_URL: 'https://roxannejoiner.com' } },
+    process: { env: { NEXT_PUBLIC_BASE_URL: 'https://roxannejoiner.shop' } },
     console: { log() {}, error() {}, warn() {} }, Date,
   });
   return exports;
@@ -56,7 +56,7 @@ function loadRoute(file, mocks) {
   };
   const create = loadRoute('src/app/api/create-stripe-checkout/route.ts', mocks).POST;
   const verify = loadRoute('src/app/api/verify-payment/route.ts', mocks).POST;
-  const request = () => ({ headers: { get: () => 'https://roxannejoiner.com' }, json: async () => ({
+  const request = () => ({ headers: { get: () => 'https://roxannejoiner.shop' }, json: async () => ({
     orderId: 'order-1', product: { slug: 'mower', title: 'Tampered', price: 1, currency: 'GBP' },
     shippingData: { fullName: 'Test Buyer', email: 'test@example.com', streetAddress: '1 Test St', addressLine2: 'Unit 2', city: 'Boston', state: 'MA', zipCode: '02108', countryCode: 'US' },
   }) });

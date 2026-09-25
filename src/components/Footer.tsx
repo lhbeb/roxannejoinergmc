@@ -46,8 +46,7 @@ const Footer = () => {
             <h3 className="text-base font-semibold text-white mb-4 tracking-wide uppercase">Navigation</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/" className="hover:text-white hover:underline transition-colors duration-200">Home</Link></li>
-              <li><Link href="/search" className="hover:text-white hover:underline transition-colors duration-200">Kayaks & Inventory</Link></li>
-              <li><Link href="/#featured" className="hover:text-white hover:underline transition-colors duration-200">Featured Models</Link></li>
+              <li><Link href="/#featured" className="hover:text-white hover:underline transition-colors duration-200">Shop Kayaks</Link></li>
               <li><Link href="/track" className="hover:text-white hover:underline transition-colors duration-200">Track Order</Link></li>
               <li><Link href="/contact" className="hover:text-white hover:underline transition-colors duration-200">Contact Us</Link></li>
             </ul>
@@ -59,7 +58,7 @@ const Footer = () => {
               <li><Link href="/privacy-policy" className="hover:text-white hover:underline transition-colors duration-200">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-white hover:underline transition-colors duration-200">Terms of Service</Link></li>
               <li><Link href="/about" className="hover:text-white hover:underline transition-colors duration-200">About RoxanneJoiner</Link></li>
-              <li><Link href="/frequently-asked-questions" className="hover:text-white hover:underline transition-colors duration-200">FAQs</Link></li>
+              <li><Link href="/frequently-asked-questions" className="hover:text-white hover:underline transition-colors duration-200">Shipping & Returns FAQs</Link></li>
               <li><Link href="/return-policy" className="hover:text-white hover:underline transition-colors duration-200">Refund & Return Policy</Link></li>
               <li><Link href="/shipping-policy" className="hover:text-white hover:underline transition-colors duration-200">Shipping & Delivery Policy</Link></li>
               <li><Link href="/local-pickup" className="hover:text-white hover:underline transition-colors duration-200">Local Pickup Guide</Link></li>

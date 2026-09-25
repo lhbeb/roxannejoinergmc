@@ -25,21 +25,14 @@ function inferDefaultCountry(product?: Product | null): { code: string; name: st
   const market = product?.meta?.targetMarket as string | undefined;
   const currency = product?.currency as string | undefined;
 
-  // Direct market → country code mapping
+  // RoxanneJoiner ships to serviceable U.S. addresses only.
   const marketToCountry: Record<string, string> = {
     us: 'US',
-    ca: 'CA',
-    au: 'AU',
-    eu: 'DE', // EU products default to Germany
   };
 
-  // Currency fallback → country code mapping
+  // Currency fallback keeps checkout aligned with the public U.S.-only policy.
   const currencyToCountry: Record<string, string> = {
     USD: 'US',
-    CAD: 'CA',
-    AUD: 'AU',
-    EUR: 'DE',
-    NZD: 'NZ',
   };
 
   const code = (market && marketToCountry[market])

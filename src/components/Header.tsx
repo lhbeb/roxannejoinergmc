@@ -10,8 +10,9 @@ import ClientOnly from './ClientOnly';
 import SearchBar from './SearchBar';
 
 const catalogNavigation = [
-  { label: 'Kayaks', href: '/search?category=Kayaks' },
-  { label: 'Kayak Accessories', href: '/search?category=Kayak%20Accessories' },
+  { label: 'Kayaks', href: '/search?collection=kayaks' },
+  { label: 'Paddles', href: '/search?collection=paddles' },
+  { label: 'Accessories', href: '/search?collection=kayak-accessories' },
   { label: 'Featured', href: '/#featured' },
   { label: 'Track Order', href: '/track' },
   { label: 'FAQs', href: '/frequently-asked-questions' },
@@ -324,19 +325,6 @@ const Header = () => {
                     {item.label}
                   </Link>
                 ))}
-                <div className="border-t border-[#123E52]/10 my-2 pt-2" />
-                <Link href="/#featured" className="py-2.5 px-3 text-[#123E52] hover:bg-[#397F86]/10 rounded-lg font-medium transition-colors" onClick={handleMobileMenuClose}>
-                  Featured Kayaks
-                </Link>
-                <Link href="/track" className="py-2.5 px-3 text-[#123E52] hover:bg-[#397F86]/10 rounded-lg font-medium transition-colors" onClick={handleMobileMenuClose}>
-                  Track Order
-                </Link>
-                <Link href="/frequently-asked-questions" className="py-2.5 px-3 text-[#123E52] hover:bg-[#397F86]/10 rounded-lg font-medium transition-colors" onClick={handleMobileMenuClose}>
-                  FAQs
-                </Link>
-                <Link href="/contact" className="py-2.5 px-3 text-[#123E52] hover:bg-[#397F86]/10 rounded-lg font-medium transition-colors" onClick={handleMobileMenuClose}>
-                  Contact Us
-                </Link>
               </nav>
             </div>
           </div>
@@ -360,12 +348,6 @@ const Header = () => {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href="/#featured"
-                className="flex-shrink-0 whitespace-nowrap rounded-full bg-white/10 hover:bg-white/20 px-3.5 py-1.5 text-xs font-medium text-white transition-colors duration-200"
-              >
-                Featured
-              </Link>
             </nav>
           </div>
         </div>

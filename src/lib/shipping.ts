@@ -39,9 +39,7 @@ export interface AddressConfig {
   postalBeforeCity?: boolean;
 }
 
-const PAYPAL_ELIGIBLE_COUNTRY_CODES = [
-  'US', 'CA', 'FR', 'DE', 'AU', 'NZ', 'IT', 'NL', 'PT', 'ES', 'PL', 'AT',
-];
+const PAYPAL_ELIGIBLE_COUNTRY_CODES = ['US'];
 const FEATURED_COUNTRY_CODES = PAYPAL_ELIGIBLE_COUNTRY_CODES;
 
 const ISO_COUNTRY_CODES = `

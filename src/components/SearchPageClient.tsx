@@ -5,13 +5,51 @@ import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import type { Product } from "@/types/product";
 import { Loader2 } from "lucide-react";
+import { PRODUCT_COLLECTION_OPTIONS, getCollectionsForCategory } from "@/lib/productCollections";
 
 interface SearchPageClientProps {
   initialQuery?: string;
   initialCategory?: string;
+  initialCollection?: string;
 }
 
 const CATALOG_CATEGORIES = ["Kayaks", "Recreational Kayaks", "Fishing Kayaks", "Tandem Kayaks", "Touring Kayaks", "Inflatable Kayaks", "Paddles", "Kayak Accessories"] as const;
+const TOP_LEVEL_CATEGORY_COLLECTIONS: Record<string, string> = {
+  Kayaks: "kayaks",
+  Paddles: "paddles",
+  "Kayak Accessories": "kayak-accessories",
+};
+
+function getExactCatalogCollection(value: string): string {
+  const normalizedValue = value.trim().toLowerCase();
+
+  return (
+    PRODUCT_COLLECTION_OPTIONS.find(
+      (collection) =>
+        collection.value.toLowerCase() === normalizedValue ||
+        collection.label.toLowerCase() === normalizedValue,
+    )?.value || ""
+  );
+}
+
+function getCollectionLabel(value: string): string {
+  return (
+    PRODUCT_COLLECTION_OPTIONS.find((collection) => collection.value === value)?.label ||
+    value
+  );
+}
+
+function productMatchesCollection(product: Product, collection: string): boolean {
+  const productCollections = Array.isArray(product.collections)
+    ? product.collections.map((value) => value.trim().toLowerCase())
+    : [];
+  const inferredCollections = getCollectionsForCategory(product.category || "");
+
+  return (
+    productCollections.includes(collection.toLowerCase()) ||
+    inferredCollections.includes(collection)
+  );
+}
 
 function getExactCatalogCategory(value: string): string {
   const normalizedValue = value.trim().toLowerCase();
@@ -126,14 +164,22 @@ function advancedSearch(products: Product[], query: string): Product[] {
     .map((item) => item.product);
 }
 
-export default function SearchPageClient({ initialQuery, initialCategory }: SearchPageClientProps) {
+export default function SearchPageClient({ initialQuery, initialCategory, initialCollection }: SearchPageClientProps) {
   const searchParams = useSearchParams();
   const queryParam = searchParams.get("query") || initialQuery || "";
   const categoryParam = searchParams.get("category") || initialCategory || "";
+  const collectionParam = searchParams.get("collection") || initialCollection || "";
   // Old and cached navbar links used `?query=Kayaks`. Treat known catalog
   // names as exact categories so accessory copy cannot leak into the results.
   const exactCategory = categoryParam.trim() || getExactCatalogCategory(queryParam);
-  const activeTerm = exactCategory || queryParam;
+  const activeCollection =
+    getExactCatalogCollection(collectionParam) ||
+    TOP_LEVEL_CATEGORY_COLLECTIONS[exactCategory] ||
+    "";
+  const activeExactCategory = activeCollection ? "" : exactCategory;
+  const activeTerm = activeCollection
+    ? getCollectionLabel(activeCollection)
+    : activeExactCategory || queryParam;
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -146,7 +192,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
   // Reset to page 1 when the search or category changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [queryParam, exactCategory]);
+  }, [queryParam, activeExactCategory, activeCollection]);
 
   // Fetch and search products
   useEffect(() => {
@@ -170,11 +216,13 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
 
         const allProducts: Product[] = await response.json();
 
-        const filteredProducts = exactCategory
+        const filteredProducts = activeCollection
+          ? allProducts.filter((product) => productMatchesCollection(product, activeCollection))
+          : activeExactCategory
           ? allProducts.filter(
               (product) =>
                 String(product.category || '').trim().toLowerCase() ===
-                exactCategory.toLowerCase(),
+                activeExactCategory.toLowerCase(),
             )
           : advancedSearch(allProducts, queryParam);
 
@@ -189,7 +237,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
     };
 
     fetchAndSearch();
-  }, [queryParam, exactCategory, activeTerm]);
+  }, [queryParam, activeExactCategory, activeCollection, activeTerm]);
 
   // Paginated products
   const paginatedProducts = useMemo(() => {
@@ -246,7 +294,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
         <>
           <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold text-[#262626] mb-2">
-              {exactCategory ? exactCategory : <>Search Results for &quot;{queryParam}&quot;</>}
+              {activeCollection || activeExactCategory ? activeTerm : <>Search Results for &quot;{queryParam}&quot;</>}
             </h1>
             <p className="text-gray-600">
               Found {products.length} {products.length === 1 ? "product" : "products"}

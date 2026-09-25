@@ -7,5 +7,8 @@ export const storePolicy = {
   transitDays: { min: 5, max: 9 },
   returnWindowDays: 30,
   returnMethod: 'By mail',
+  returnProductCondition: 'New only',
+  returnLabel: 'Included in the package',
+  restockingFee: 0,
   refundProcessingDays: 5,
 } as const;

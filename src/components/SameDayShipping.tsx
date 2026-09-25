@@ -60,7 +60,7 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
                 Order Processing
               </h3>
               <p className="text-gray-600 text-sm">
-                Orders normally leave our fulfillment process within 1–2 business days after payment is confirmed.
+                Orders normally require 1-2 business days for processing after payment is confirmed.
               </p>
             </div>
           </div>
@@ -77,7 +77,7 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
                 30-Day Returns
               </h3>
               <p className="text-gray-600 text-sm">
-                Eligible items may be returned by mail within 30 days. Conditions and shipping responsibility are explained in our return policy.
+                Defective and non-defective products may be returned by mail within 30 days when returned new only.
               </p>
             </div>
           </div>
@@ -94,7 +94,7 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
                 Shipment Tracking
               </h3>
               <p className="text-gray-600 text-sm">
-                When tracking is available, it is sent after dispatch so you can follow carrier updates.
+                Standard transit across the United States is estimated at 5-9 business days after dispatch.
               </p>
             </div>
           </div>
@@ -108,7 +108,7 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             Ready to experience the RoxanneJoiner difference?
           </p>
           <p className="text-xl sm:text-2xl md:text-3xl font-bold text-[#123E52]">
-            Order today for <span className="text-[#397F86]">fast nationwide delivery</span>
+            Order today for <span className="text-[#397F86]">clear U.S. delivery timelines</span>
           </p>
         </div>
         <a
