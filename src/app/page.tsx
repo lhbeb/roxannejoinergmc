@@ -5,7 +5,6 @@ import SameDayShipping from '@/components/SameDayShipping';
 import ProductGrid from '@/components/ProductGrid';
 import HomeReviews from '@/components/HomeReviews';
 import CategorySection from '@/components/CategorySection';
-import PopularCategories from '@/components/PopularCategories';
 import { getFeaturedProducts, getProducts } from '@/lib/data';
 import { homeReviews, homeReviewsStats } from '@/lib/homeReviews';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -41,8 +40,6 @@ export default async function HomePage() {
         <ScrollToTop />
       </Suspense>
       <Hero />
-
-      <PopularCategories products={products} />
 
       <CategorySection
         products={featuredProducts.length > 0 ? featuredProducts : products}
