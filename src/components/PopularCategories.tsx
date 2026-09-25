@@ -26,18 +26,9 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
   if (categories.length === 0) return null;
 
   return (
-    <section className="bg-[#F7F3E8] py-14 md:py-20" aria-labelledby="popular-categories-title">
+    <section className="bg-[#F7F3E8] py-14 md:py-20" aria-label="Product categories">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 md:mb-10">
-            <h2
-              id="popular-categories-title"
-              className="text-3xl font-bold tracking-tight text-[#123E52] md:text-4xl"
-            >
-              Explore Paddling Gear & Categories
-            </h2>
-          </div>
-
           <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
             {categories.map((category) => (
               <Link
